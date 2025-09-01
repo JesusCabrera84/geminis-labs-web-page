@@ -10,6 +10,24 @@
   --glass-border: rgba(216, 215, 204, 0.2);
 }
 
+/* Declaración de fuentes personalizadas */
+@font-face {
+  font-family: 'Dune Rise';
+  src: url('/fonts/Dune_Rise.otf') format('opentype'),
+       url('/fonts/Dune_Rise.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Robodron';
+  src: url('/fonts/robodron-bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Reset y estilos globales */
 * {
   margin: 0;
@@ -19,6 +37,7 @@
 
 :global(html) {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Para compensar el navbar fijo */
 }
 
 :global(body) {
@@ -98,6 +117,30 @@
   padding: 0 2rem;
 }
 
+/* Clases utilitarias para las fuentes personalizadas */
+.font-dune-rise {
+  font-family: 'Dune Rise', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.font-dune-rise-title {
+  font-family: 'Dune Rise', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+}
+
+.font-dune-rise-subtitle {
+  font-family: 'Dune Rise', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: normal;
+  letter-spacing: 0.01em;
+}
+
+/* Clases para h1 con Dune Rise */
+.font-dune-rise-h1 {
+  font-family: 'Dune Rise', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+}
+
 /* Navegación */
 .navbar {
   position: fixed;
@@ -121,8 +164,9 @@
 }
 
 .nav-logo h1 {
+  font-family: 'Dune Rise', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: normal;
   color: var(--accent-cyan);
   text-shadow: 0 0 20px rgba(0, 166, 192, 0.5);
 }
@@ -179,14 +223,16 @@
 }
 
 .hero-title {
+  font-family: 'Dune Rise', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
+  font-weight: normal;
   margin-bottom: 1.5rem;
   background: linear-gradient(135deg, var(--light-cream) 0%, var(--accent-cyan) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1.2;
+  letter-spacing: 0.02em;
 }
 
 .hero-subtitle {
@@ -284,8 +330,25 @@
 
 /* Secciones generales */
 section {
-  padding: 6rem 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+  padding: 2rem 0;
+  box-sizing: border-box;
+}
+
+/* Indicador visual de sección */
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  opacity: 0.3;
 }
 
 .section-title {
@@ -303,13 +366,23 @@ section {
 .services-section {
   background: rgba(40, 59, 72, 0.1);
   backdrop-filter: blur(10px);
+  padding: 4rem 0;
+}
+
+.services-section .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin-top: 4rem;
+  margin-top: 3rem;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 
 .service-card {
@@ -356,6 +429,14 @@ section {
 /* Sección Quiénes Somos */
 .about-section {
   background: rgba(34, 40, 49, 0.3);
+  padding: 4rem 0;
+}
+
+.about-section .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .about-content {
@@ -363,6 +444,8 @@ section {
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .about-text {
@@ -432,6 +515,14 @@ section {
 /* Sección Contacto */
 .contact-section {
   background: rgba(40, 59, 72, 0.1);
+  padding: 4rem 0;
+}
+
+.contact-section .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .contact-content {
@@ -439,6 +530,8 @@ section {
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   margin-top: 3rem;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 
 .contact-info h3 {
@@ -645,6 +738,25 @@ section {
   
   .container {
     padding: 0 1rem;
+  }
+  
+  /* Ajustes para secciones de altura completa en móviles */
+  section {
+    min-height: 100vh;
+    padding: 1rem 0;
+  }
+  
+  .services-section,
+  .about-section,
+  .contact-section {
+    padding: 2rem 0;
+  }
+  
+  .services-grid,
+  .about-content,
+  .contact-content {
+    max-height: none;
+    overflow-y: visible;
   }
 }
 

@@ -35,6 +35,12 @@ src/
 │       ├── +layout.svelte      # Layout de tracking (con auth)
 │       └── +page.svelte        # Página principal de tracking
 └── app.css                     # Importación de estilos
+static/
+├── fonts/                      # Fuentes personalizadas
+│   ├── Dune_Rise.otf          # Fuente Dune Rise (OpenType)
+│   └── Dune_Rise.ttf          # Fuente Dune Rise (TrueType)
+├── img/                        # Imágenes estáticas
+└── vid/                        # Videos de fondo
 ```
 
 ## Configuración
@@ -59,13 +65,35 @@ VITE_API_BASE_URL=http://localhost:3000/api
 4. Crea credenciales (API Key)
 5. Restringe la API Key a tu dominio por seguridad
 
-### 3. Instalar Dependencias
+### 3. Configurar Fuentes Personalizadas
+
+Coloca tus archivos de fuente en `static/fonts/`:
+
+```bash
+# Crear directorio de fuentes
+mkdir -p static/fonts
+
+# Copiar archivos de fuente
+cp ruta/a/tu/Dune_Rise.otf static/fonts/
+cp ruta/a/tu/Dune_Rise.ttf static/fonts/
+```
+
+**Fuentes soportadas:**
+- **Dune Rise**: Aplicada automáticamente solo a elementos h1 (títulos principales)
+- **Fuentes del sistema**: Para el resto de elementos (h2, h3, p, etc.)
+- **Clases CSS disponibles**:
+  - `.font-dune-rise`: Aplica la fuente Dune Rise
+  - `.font-dune-rise-title`: Para títulos principales con Dune Rise
+  - `.font-dune-rise-subtitle`: Para subtítulos con Dune Rise
+  - `.font-dune-rise-h1`: Para elementos h1 con Dune Rise
+
+### 4. Instalar Dependencias
 
 ```bash
 npm install
 ```
 
-### 4. Ejecutar en Desarrollo
+### 5. Ejecutar en Desarrollo
 
 ```bash
 npm run dev
