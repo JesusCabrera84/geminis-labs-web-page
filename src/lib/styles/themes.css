@@ -1,0 +1,1026 @@
+/* ===================================================================
+   SISTEMA DE TEMAS MULTIPLES - GEMINIS LABS
+   Soporte para 4 temas intercambiables por código
+   ================================================================== */
+
+/* ===================================================================
+   TEMA 1: DEFAULT (ACTUAL) - Conserva la identidad visual original
+   ================================================================== */
+:root,
+:root[data-theme='default'] {
+	/* Colores principales - ORIGINALES EXACTOS */
+	--color-bg-primary: #222831;
+	--color-bg-secondary: #283b48;
+	--color-bg-tertiary: rgba(34, 40, 49, 0.1);
+
+	/* Acentos - ORIGINALES CON GRADIENTE CYAN-VERDE */
+	--color-accent-primary: #00a6c0;
+	--color-accent-secondary: #21e68c;
+	--color-accent-hover: #0088a3;
+
+	/* Texto - ORIGINAL */
+	--color-text-primary: #d8d7cc;
+	--color-text-secondary: rgba(216, 215, 204, 0.9);
+	--color-text-muted: rgba(216, 215, 204, 0.6);
+	--color-text-dark: #0f172a;
+
+	/* Efectos y bordes - ORIGINALES */
+	--color-glass-bg: rgba(34, 40, 49, 0.1);
+	--color-glass-border: rgba(216, 215, 204, 0.2);
+	--color-shadow-primary: rgba(0, 166, 192, 0.3);
+	--color-shadow-secondary: rgba(0, 166, 192, 0.2);
+
+	/* Estados de error y peligro */
+	--color-error-primary: #ef4444;
+	--color-error-secondary: #dc2626;
+	--color-error-shadow: rgba(239, 68, 68, 0.4);
+
+	/* Gradientes - RESTAURADOS ORIGINALES */
+	--gradient-primary: linear-gradient(135deg, #00a6c0 0%, #0088a3 100%);
+	--gradient-text: linear-gradient(135deg, #d8d7cc 0%, #00a6c0 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(34, 40, 49, 0.7) 0%,
+		rgba(40, 59, 72, 0.6) 50%,
+		rgba(0, 166, 192, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(34, 40, 49, 0.82) 0%,
+		rgba(40, 59, 72, 0.82) 100%
+	);
+
+	/* Variables para neblina dinámica del fondo estrellado */
+	--starfield-haze-primary: rgba(64, 96, 128, 0.15);
+	--starfield-haze-secondary: rgba(80, 112, 144, 0.08);
+	--starfield-haze-tertiary: rgba(96, 128, 160, 0.05);
+	--starfield-haze-intensity: 1;
+	--starfield-haze-animation-duration: 45s;
+}
+
+/* ===================================================================
+   TEMA 2: DUAL-TECH-HUMAN - Moderno, equilibrado y con calidez
+   ================================================================== */
+:root[data-theme='dual-tech-human'] {
+	/* Colores principales */
+	--color-bg-primary: #0d1b2a;
+	--color-bg-secondary: #142a3b;
+	--color-bg-tertiary: rgba(20, 42, 59, 0.1);
+
+	/* Acentos */
+	--color-accent-primary: #2dd4bf; /* Cyan Pulse */
+	--color-accent-secondary: #21e68c; /* Neo Green */
+	--color-accent-hover: #14b8a6;
+	--color-accent-warm: rgba(244, 184, 96, 0.4); /* Solar Amber */
+
+	/* Texto */
+	--color-text-primary: #f8fafc;
+	--color-text-secondary: rgba(248, 250, 252, 0.9);
+	--color-text-muted: rgba(248, 250, 252, 0.6);
+	--color-text-dark: #1e293b;
+
+	/* Efectos y bordes */
+	--color-glass-bg: rgba(20, 42, 59, 0.15);
+	--color-glass-border: rgba(45, 212, 191, 0.2);
+	--color-shadow-primary: rgba(45, 212, 191, 0.3);
+	--color-shadow-secondary: rgba(33, 230, 140, 0.2);
+
+	/* Estados de error y peligro */
+	--color-error-primary: #ef4444;
+	--color-error-secondary: #dc2626;
+	--color-error-shadow: rgba(239, 68, 68, 0.4);
+
+	/* Gradientes */
+	--gradient-primary: linear-gradient(
+		135deg,
+		var(--color-accent-primary) 0%,
+		var(--color-accent-hover) 100%
+	);
+	--gradient-text: linear-gradient(
+		135deg,
+		var(--color-text-primary) 0%,
+		var(--color-accent-primary) 100%
+	);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(13, 27, 42, 0.7) 0%,
+		rgba(20, 42, 59, 0.6) 50%,
+		rgba(45, 212, 191, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(13, 27, 42, 0.82) 0%,
+		rgba(20, 42, 59, 0.82) 100%
+	);
+
+	/* Variables para neblina dinámica del fondo estrellado */
+	--starfield-haze-primary: rgba(45, 212, 191, 0.18);
+	--starfield-haze-secondary: rgba(0, 168, 120, 0.1);
+	--starfield-haze-tertiary: rgba(244, 184, 96, 0.06);
+	--starfield-haze-intensity: 1.2;
+	--starfield-haze-animation-duration: 40s;
+}
+
+/* ===================================================================
+   TEMA 3: VIBRANT - Experimental para marketing, colores vibrantes
+   ================================================================== */
+:root[data-theme='vibrant'] {
+	/* Colores principales */
+	--color-bg-primary: #111827;
+	--color-bg-secondary: #1f2937;
+	--color-bg-tertiary: rgba(31, 41, 55, 0.1);
+
+	/* Acentos */
+	--color-accent-primary: #14f4c8; /* Electric Teal */
+	--color-accent-secondary: #ff6b6b; /* Warm Coral */
+	--color-accent-hover: #0dd4aa;
+	--color-accent-tertiary: #c3f73a; /* Lime Glow */
+
+	/* Texto */
+	--color-text-primary: #e5e7eb;
+	--color-text-secondary: rgba(229, 231, 235, 0.9);
+	--color-text-muted: rgba(229, 231, 235, 0.6);
+	--color-text-dark: #111827;
+
+	/* Efectos y bordes */
+	--color-glass-bg: rgba(31, 41, 55, 0.15);
+	--color-glass-border: rgba(20, 244, 200, 0.2);
+	--color-shadow-primary: rgba(20, 244, 200, 0.4);
+	--color-shadow-secondary: rgba(255, 107, 107, 0.3);
+
+	/* Gradientes */
+	--gradient-primary: linear-gradient(
+		135deg,
+		var(--color-accent-primary) 0%,
+		var(--color-accent-hover) 100%
+	);
+	--gradient-text: linear-gradient(
+		135deg,
+		var(--color-text-primary) 0%,
+		var(--color-accent-primary) 50%,
+		var(--color-accent-secondary) 100%
+	);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(17, 24, 39, 0.7) 0%,
+		rgba(31, 41, 55, 0.6) 50%,
+		rgba(20, 244, 200, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(17, 24, 39, 0.82) 0%,
+		rgba(31, 41, 55, 0.82) 100%
+	);
+
+	/* Variables para neblina dinámica del fondo estrellado */
+	--starfield-haze-primary: rgba(20, 244, 200, 0.22);
+	--starfield-haze-secondary: rgba(255, 107, 107, 0.12);
+	--starfield-haze-tertiary: rgba(195, 247, 58, 0.08);
+	--starfield-haze-intensity: 1.4;
+	--starfield-haze-animation-duration: 35s;
+}
+
+/* ===================================================================
+   TEMA 4: WARM-TECH - Alternativa con tono humano y cálido
+   ================================================================== */
+:root[data-theme='warm-tech'] {
+	/* Colores principales */
+	--color-bg-primary: #1c1a1a;
+	--color-bg-secondary: #302e2e;
+	--color-bg-tertiary: rgba(48, 46, 46, 0.1);
+
+	/* Acentos */
+	--color-accent-primary: #ffb347; /* Amber Light */
+	--color-accent-secondary: #19e68c; /* Complementario verde */
+	--color-accent-hover: #ff9500;
+
+	/* Texto */
+	--color-text-primary: #f8fafc;
+	--color-text-secondary: rgba(248, 250, 252, 0.9);
+	--color-text-muted: rgba(248, 250, 252, 0.6);
+	--color-text-dark: #1c1a1a;
+
+	/* Efectos y bordes */
+	--color-glass-bg: rgba(48, 46, 46, 0.15);
+	--color-glass-border: rgba(255, 179, 71, 0.2);
+	--color-shadow-primary: rgba(255, 179, 71, 0.3);
+	--color-shadow-secondary: rgba(25, 230, 140, 0.2);
+
+	/* Gradientes */
+	--gradient-primary: linear-gradient(
+		135deg,
+		var(--color-accent-primary) 0%,
+		var(--color-accent-hover) 100%
+	);
+	--gradient-text: linear-gradient(
+		135deg,
+		var(--color-text-primary) 0%,
+		var(--color-accent-primary) 100%
+	);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(28, 26, 26, 0.7) 0%,
+		rgba(48, 46, 46, 0.6) 50%,
+		rgba(255, 179, 71, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(28, 26, 26, 0.82) 0%,
+		rgba(48, 46, 46, 0.82) 100%
+	);
+
+	/* Variables para neblina dinámica del fondo estrellado */
+	--starfield-haze-primary: rgba(255, 179, 71, 0.09);
+	--starfield-haze-secondary: rgba(25, 230, 140, 0.05);
+	--starfield-haze-tertiary: rgba(255, 149, 0, 0.03);
+	--starfield-haze-intensity: 0.9;
+	--starfield-haze-animation-duration: 50s;
+}
+
+/* ===================================================================
+   TEMA 5: LIGHT ELEGANCE - Matices blancos elegantes
+   ================================================================== */
+:root[data-theme='light-elegance'] {
+	/* Colores principales - MATICES BLANCOS */
+	--color-bg-primary: #fafbfc;
+	--color-bg-secondary: #f4f6f8;
+	--color-bg-tertiary: rgba(255, 255, 255, 0.8);
+
+	/* Acentos - AZULES SUAVES CON TOQUES CYAN */
+	--color-accent-primary: #2563eb;
+	--color-accent-secondary: #0ea5e9;
+	--color-accent-hover: #1d4ed8;
+	--color-accent-warm: rgba(59, 130, 246, 0.1);
+
+	/* Texto - GRISES ELEGANTES */
+	--color-text-primary: #1f2937;
+	--color-text-secondary: rgba(31, 41, 55, 0.8);
+	--color-text-muted: rgba(31, 41, 55, 0.6);
+	--color-text-dark: #111827;
+
+	/* Efectos y bordes - SUTILES */
+	--color-glass-bg: rgba(255, 255, 255, 0.7);
+	--color-glass-border: rgba(37, 99, 235, 0.2);
+	--color-shadow-primary: rgba(37, 99, 235, 0.15);
+	--color-shadow-secondary: rgba(14, 165, 233, 0.1);
+
+	/* Gradientes - SUAVES Y ELEGANTES */
+	--gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+	--gradient-text: linear-gradient(135deg, #1f2937 0%, #2563eb 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(250, 251, 252, 0.9) 0%,
+		rgba(244, 246, 248, 0.8) 50%,
+		rgba(37, 99, 235, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.9) 0%,
+		rgba(244, 246, 248, 0.9) 100%
+	);
+
+	/* Variables para neblina dinámica del fondo estrellado */
+	--starfield-haze-primary: rgba(255, 255, 255, 0.03);
+	--starfield-haze-secondary: rgba(37, 99, 235, 0.02);
+	--starfield-haze-tertiary: rgba(14, 165, 233, 0.01);
+	--starfield-haze-intensity: 0.3;
+	--starfield-haze-animation-duration: 60s;
+}
+
+/* ===================================================================
+   TEMA 6: NEURAL CONNECT - Conexión neuronal humano-tecnológica
+   ================================================================== */
+:root[data-theme='neural-connect'] {
+	/* Colores principales - TONOS NEURALES */
+	--color-bg-primary: #0f0f23;
+	--color-bg-secondary: #1a1a2e;
+	--color-bg-tertiary: rgba(26, 26, 46, 0.1);
+
+	/* Acentos - PÚRPURA NEURAL + CYAN SINÁPTICO */
+	--color-accent-primary: #8b5cf6;
+	--color-accent-secondary: #06b6d4;
+	--color-accent-hover: #7c3aed;
+	--color-accent-warm: rgba(251, 191, 36, 0.3); /* Golden synapses */
+
+	/* Texto - LUMINOSO NEURAL */
+	--color-text-primary: #e2e8f0;
+	--color-text-secondary: rgba(226, 232, 240, 0.9);
+	--color-text-muted: rgba(226, 232, 240, 0.6);
+	--color-text-dark: #0f0f23;
+
+	/* Efectos y bordes - CONEXIONES NEURALES */
+	--color-glass-bg: rgba(26, 26, 46, 0.15);
+	--color-glass-border: rgba(139, 92, 246, 0.3);
+	--color-shadow-primary: rgba(139, 92, 246, 0.4);
+	--color-shadow-secondary: rgba(6, 182, 212, 0.3);
+
+	/* Gradientes - FLUJO NEURAL */
+	--gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 50%, #7c3aed 100%);
+	--gradient-text: linear-gradient(135deg, #e2e8f0 0%, #8b5cf6 50%, #06b6d4 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(15, 15, 35, 0.8) 0%,
+		rgba(26, 26, 46, 0.7) 50%,
+		rgba(139, 92, 246, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(15, 15, 35, 0.85) 0%,
+		rgba(26, 26, 46, 0.85) 100%
+	);
+
+	/* Variables para neblina dinámica del fondo estrellado */
+	--starfield-haze-primary: rgba(139, 92, 246, 0.1);
+	--starfield-haze-secondary: rgba(6, 182, 212, 0.06);
+	--starfield-haze-tertiary: rgba(251, 191, 36, 0.04);
+	--starfield-haze-intensity: 1.1;
+	--starfield-haze-animation-duration: 42s;
+}
+
+/* ===================================================================
+   TEMA 7: HUMAN PULSE - Latido humano con tecnología orgánica
+   ================================================================== */
+:root[data-theme='human-pulse'] {
+	/* Colores principales - TONOS ORGÁNICOS */
+	--color-bg-primary: #1a1b1e;
+	--color-bg-secondary: #2d2e33;
+	--color-bg-tertiary: rgba(45, 46, 51, 0.1);
+
+	/* Acentos - CORAL VITAL + VERDE VIDA + DORADO CÁLIDO */
+	--color-accent-primary: #ff6b6b;
+	--color-accent-secondary: #4ecdc4;
+	--color-accent-hover: #ff5252;
+	--color-accent-warm: rgba(255, 193, 7, 0.4); /* Warm golden pulse */
+
+	/* Texto - CÁLIDO HUMANO */
+	--color-text-primary: #f5f5f5;
+	--color-text-secondary: rgba(245, 245, 245, 0.9);
+	--color-text-muted: rgba(245, 245, 245, 0.6);
+	--color-text-dark: #1a1b1e;
+
+	/* Efectos y bordes - PULSO VITAL */
+	--color-glass-bg: rgba(45, 46, 51, 0.15);
+	--color-glass-border: rgba(255, 107, 107, 0.3);
+	--color-shadow-primary: rgba(255, 107, 107, 0.4);
+	--color-shadow-secondary: rgba(78, 205, 196, 0.3);
+
+	/* Gradientes - FLUJO VITAL */
+	--gradient-primary: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #ffc107 100%);
+	--gradient-text: linear-gradient(135deg, #f5f5f5 0%, #ff6b6b 50%, #4ecdc4 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(26, 27, 30, 0.8) 0%,
+		rgba(45, 46, 51, 0.7) 50%,
+		rgba(255, 107, 107, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(26, 27, 30, 0.85) 0%,
+		rgba(45, 46, 51, 0.85) 100%
+	);
+
+	/* Variables para neblina dinámica del fondo estrellado */
+	--starfield-haze-primary: rgba(255, 107, 107, 0.2);
+	--starfield-haze-secondary: rgba(78, 205, 196, 0.12);
+	--starfield-haze-tertiary: rgba(255, 193, 7, 0.08);
+	--starfield-haze-intensity: 1.3;
+	--starfield-haze-animation-duration: 38s;
+}
+
+/* ===================================================================
+   TEMA 8: CELESTIAL CORE - Energía cósmica y precisión orbital
+   ================================================================== */
+:root[data-theme='celestial-core'] {
+	/* Colores principales - ESPACIO PROFUNDO */
+	--color-bg-primary: #090e1a;
+	--color-bg-secondary: #1e2a44;
+	--color-bg-tertiary: rgba(30, 42, 68, 0.1);
+
+	/* Acentos - ENERGÍA CÓSMICA */
+	--color-accent-primary: #00c6ff;
+	--color-accent-secondary: #0ea5e9;
+	--color-accent-hover: #0099cc;
+	--color-accent-warm: rgba(0, 198, 255, 0.2);
+
+	/* Texto - ETÉREO */
+	--color-text-primary: #e0e8ff;
+	--color-text-secondary: rgba(224, 232, 255, 0.9);
+	--color-text-muted: rgba(224, 232, 255, 0.6);
+	--color-text-dark: #090e1a;
+
+	/* Efectos y bordes - CÓSMICOS */
+	--color-glass-bg: rgba(30, 42, 68, 0.15);
+	--color-glass-border: rgba(0, 198, 255, 0.3);
+	--color-shadow-primary: rgba(0, 198, 255, 0.4);
+	--color-shadow-secondary: rgba(14, 165, 233, 0.3);
+
+	/* Gradientes - ORBITAL */
+	--gradient-primary: linear-gradient(135deg, #00c6ff 0%, #0099cc 100%);
+	--gradient-text: linear-gradient(135deg, #e0e8ff 0%, #00c6ff 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(9, 14, 26, 0.8) 0%,
+		rgba(30, 42, 68, 0.7) 50%,
+		rgba(0, 198, 255, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(9, 14, 26, 0.85) 0%,
+		rgba(30, 42, 68, 0.85) 100%
+	);
+
+	/* Variables para neblina dinámica del fondo estrellado */
+	--starfield-haze-primary: rgba(0, 198, 255, 0.1);
+	--starfield-haze-secondary: rgba(14, 165, 233, 0.06);
+	--starfield-haze-tertiary: rgba(0, 198, 255, 0.03);
+	--starfield-haze-intensity: 1;
+	--starfield-haze-animation-duration: 55s;
+}
+
+/* ===================================================================
+   TEMA 9: QUANTUM VEINS - Energía en movimiento y redes de datos vivas
+   ================================================================== */
+:root[data-theme='quantum-veins'] {
+	/* Colores principales - CUÁNTICO */
+	--color-bg-primary: #0c0b1d;
+	--color-bg-secondary: #1c1a3a;
+	--color-bg-tertiary: rgba(28, 26, 58, 0.1);
+
+	/* Acentos - NEURONAL CUÁNTICO */
+	--color-accent-primary: #7f5af0;
+	--color-accent-secondary: #a78bfa;
+	--color-accent-hover: #6d28d9;
+	--color-accent-warm: rgba(127, 90, 240, 0.3);
+
+	/* Texto - CUÁNTICO LUMINOSO */
+	--color-text-primary: #eae9ff;
+	--color-text-secondary: rgba(234, 233, 255, 0.9);
+	--color-text-muted: rgba(234, 233, 255, 0.6);
+	--color-text-dark: #0c0b1d;
+
+	/* Efectos y bordes - VENAS CUÁNTICAS */
+	--color-glass-bg: rgba(28, 26, 58, 0.15);
+	--color-glass-border: rgba(127, 90, 240, 0.3);
+	--color-shadow-primary: rgba(127, 90, 240, 0.4);
+	--color-shadow-secondary: rgba(167, 139, 250, 0.3);
+
+	/* Gradientes - FLUJO CUÁNTICO */
+	--gradient-primary: linear-gradient(135deg, #7f5af0 0%, #6d28d9 100%);
+	--gradient-text: linear-gradient(135deg, #eae9ff 0%, #7f5af0 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(12, 11, 29, 0.8) 0%,
+		rgba(28, 26, 58, 0.7) 50%,
+		rgba(127, 90, 240, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(12, 11, 29, 0.85) 0%,
+		rgba(28, 26, 58, 0.85) 100%
+	);
+}
+
+/* ===================================================================
+   TEMA 10: DIGITAL LIFE - Vida digital con pulsaciones orgánicas
+   ================================================================== */
+:root[data-theme='digital-life'] {
+	/* Reutiliza Human Pulse con ajustes */
+	--color-bg-primary: #1a1b1e;
+	--color-bg-secondary: #2d2e33;
+	--color-bg-tertiary: rgba(45, 46, 51, 0.1);
+
+	--color-accent-primary: #ff6b6b;
+	--color-accent-secondary: #4ecdc4;
+	--color-accent-hover: #ff5252;
+	--color-accent-warm: rgba(255, 193, 7, 0.4);
+
+	--color-text-primary: #f5f5f5;
+	--color-text-secondary: rgba(245, 245, 245, 0.9);
+	--color-text-muted: rgba(245, 245, 245, 0.6);
+	--color-text-dark: #1a1b1e;
+
+	--color-glass-bg: rgba(45, 46, 51, 0.15);
+	--color-glass-border: rgba(255, 107, 107, 0.3);
+	--color-shadow-primary: rgba(255, 107, 107, 0.4);
+	--color-shadow-secondary: rgba(78, 205, 196, 0.3);
+
+	--gradient-primary: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #ffc107 100%);
+	--gradient-text: linear-gradient(135deg, #f5f5f5 0%, #ff6b6b 50%, #4ecdc4 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(26, 27, 30, 0.8) 0%,
+		rgba(45, 46, 51, 0.7) 50%,
+		rgba(255, 107, 107, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(26, 27, 30, 0.85) 0%,
+		rgba(45, 46, 51, 0.85) 100%
+	);
+}
+
+/* ===================================================================
+   TEMA 11: COSMIC NEBULA - Nebulosa cósmica con pulsaciones orgánicas
+   ================================================================== */
+:root[data-theme='cosmic-nebula'] {
+	/* Reutiliza Celestial Core */
+	--color-bg-primary: #090e1a;
+	--color-bg-secondary: #1e2a44;
+	--color-bg-tertiary: rgba(30, 42, 68, 0.1);
+
+	--color-accent-primary: #00c6ff;
+	--color-accent-secondary: #0ea5e9;
+	--color-accent-hover: #0099cc;
+	--color-accent-warm: rgba(0, 198, 255, 0.2);
+
+	--color-text-primary: #e0e8ff;
+	--color-text-secondary: rgba(224, 232, 255, 0.9);
+	--color-text-muted: rgba(224, 232, 255, 0.6);
+	--color-text-dark: #090e1a;
+
+	--color-glass-bg: rgba(30, 42, 68, 0.15);
+	--color-glass-border: rgba(0, 198, 255, 0.3);
+	--color-shadow-primary: rgba(0, 198, 255, 0.4);
+	--color-shadow-secondary: rgba(14, 165, 233, 0.3);
+
+	--gradient-primary: linear-gradient(135deg, #00c6ff 0%, #0099cc 100%);
+	--gradient-text: linear-gradient(135deg, #e0e8ff 0%, #00c6ff 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(9, 14, 26, 0.8) 0%,
+		rgba(30, 42, 68, 0.7) 50%,
+		rgba(0, 198, 255, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(9, 14, 26, 0.85) 0%,
+		rgba(30, 42, 68, 0.85) 100%
+	);
+}
+
+/* ===================================================================
+   TEMA 12: TERRA NEXUS - Conexión entre tecnología, territorio y sostenibilidad
+   ================================================================== */
+:root[data-theme='terra-nexus'] {
+	/* Colores principales - TIERRA TECNOLÓGICA */
+	--color-bg-primary: #1e1c16;
+	--color-bg-secondary: #2f3027;
+	--color-bg-tertiary: rgba(47, 48, 39, 0.1);
+
+	/* Acentos - VERDE SOSTENIBLE */
+	--color-accent-primary: #a3e635;
+	--color-accent-secondary: #84cc16;
+	--color-accent-hover: #84cc16;
+	--color-accent-warm: rgba(163, 230, 53, 0.3);
+
+	/* Texto - NATURAL */
+	--color-text-primary: #f5f5dc;
+	--color-text-secondary: rgba(245, 245, 220, 0.9);
+	--color-text-muted: rgba(245, 245, 220, 0.6);
+	--color-text-dark: #1e1c16;
+
+	/* Efectos y bordes - ORGÁNICOS */
+	--color-glass-bg: rgba(47, 48, 39, 0.15);
+	--color-glass-border: rgba(163, 230, 53, 0.3);
+	--color-shadow-primary: rgba(163, 230, 53, 0.4);
+	--color-shadow-secondary: rgba(132, 204, 22, 0.3);
+
+	/* Gradientes - SOSTENIBLES */
+	--gradient-primary: linear-gradient(135deg, #a3e635 0%, #84cc16 100%);
+	--gradient-text: linear-gradient(135deg, #f5f5dc 0%, #a3e635 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(30, 28, 22, 0.8) 0%,
+		rgba(47, 48, 39, 0.7) 50%,
+		rgba(163, 230, 53, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(30, 28, 22, 0.85) 0%,
+		rgba(47, 48, 39, 0.85) 100%
+	);
+}
+
+/* ===================================================================
+   TEMA 13: URBAN VIBES - Vibración urbana con colores vibrantes
+   ================================================================== */
+:root[data-theme='urban-vibes'] {
+	/* Reutiliza Vibrant con ajustes urbanos */
+	--color-bg-primary: #111827;
+	--color-bg-secondary: #1f2937;
+	--color-bg-tertiary: rgba(31, 41, 55, 0.1);
+
+	--color-accent-primary: #14f4c8;
+	--color-accent-secondary: #ff6b6b;
+	--color-accent-hover: #0dd4aa;
+	--color-accent-tertiary: #c3f73a;
+
+	--color-text-primary: #e5e7eb;
+	--color-text-secondary: rgba(229, 231, 235, 0.9);
+	--color-text-muted: rgba(229, 231, 235, 0.6);
+	--color-text-dark: #111827;
+
+	--color-glass-bg: rgba(31, 41, 55, 0.15);
+	--color-glass-border: rgba(20, 244, 200, 0.2);
+	--color-shadow-primary: rgba(20, 244, 200, 0.4);
+	--color-shadow-secondary: rgba(255, 107, 107, 0.3);
+
+	--gradient-primary: linear-gradient(135deg, #14f4c8 0%, #0dd4aa 100%);
+	--gradient-text: linear-gradient(135deg, #e5e7eb 0%, #14f4c8 50%, #ff6b6b 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(17, 24, 39, 0.7) 0%,
+		rgba(31, 41, 55, 0.6) 50%,
+		rgba(20, 244, 200, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(17, 24, 39, 0.82) 0%,
+		rgba(31, 41, 55, 0.82) 100%
+	);
+}
+
+/* ===================================================================
+   TEMA 14: NEON PULSE - Pulsaciones neon con colores vibrantes
+   ================================================================== */
+:root[data-theme='neon-pulse'] {
+	/* Reutiliza Quantum Veins */
+	--color-bg-primary: #0c0b1d;
+	--color-bg-secondary: #1c1a3a;
+	--color-bg-tertiary: rgba(28, 26, 58, 0.1);
+
+	--color-accent-primary: #7f5af0;
+	--color-accent-secondary: #a78bfa;
+	--color-accent-hover: #6d28d9;
+	--color-accent-warm: rgba(127, 90, 240, 0.3);
+
+	--color-text-primary: #eae9ff;
+	--color-text-secondary: rgba(234, 233, 255, 0.9);
+	--color-text-muted: rgba(234, 233, 255, 0.6);
+	--color-text-dark: #0c0b1d;
+
+	--color-glass-bg: rgba(28, 26, 58, 0.15);
+	--color-glass-border: rgba(127, 90, 240, 0.3);
+	--color-shadow-primary: rgba(127, 90, 240, 0.4);
+	--color-shadow-secondary: rgba(167, 139, 250, 0.3);
+
+	--gradient-primary: linear-gradient(135deg, #7f5af0 0%, #6d28d9 100%);
+	--gradient-text: linear-gradient(135deg, #eae9ff 0%, #7f5af0 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(12, 11, 29, 0.8) 0%,
+		rgba(28, 26, 58, 0.7) 50%,
+		rgba(127, 90, 240, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(12, 11, 29, 0.85) 0%,
+		rgba(28, 26, 58, 0.85) 100%
+	);
+}
+
+/* ===================================================================
+   TEMA 15: RETRO FUTURE - Futuro retro con colores vibrantes
+   ================================================================== */
+:root[data-theme='retro-future'] {
+	/* Reutiliza Urban Vibes */
+	--color-bg-primary: #111827;
+	--color-bg-secondary: #1f2937;
+	--color-bg-tertiary: rgba(31, 41, 55, 0.1);
+
+	--color-accent-primary: #14f4c8;
+	--color-accent-secondary: #ff6b6b;
+	--color-accent-hover: #0dd4aa;
+	--color-accent-tertiary: #c3f73a;
+
+	--color-text-primary: #e5e7eb;
+	--color-text-secondary: rgba(229, 231, 235, 0.9);
+	--color-text-muted: rgba(229, 231, 235, 0.6);
+	--color-text-dark: #111827;
+
+	--color-glass-bg: rgba(31, 41, 55, 0.15);
+	--color-glass-border: rgba(20, 244, 200, 0.2);
+	--color-shadow-primary: rgba(20, 244, 200, 0.4);
+	--color-shadow-secondary: rgba(255, 107, 107, 0.3);
+
+	--gradient-primary: linear-gradient(135deg, #14f4c8 0%, #0dd4aa 100%);
+	--gradient-text: linear-gradient(135deg, #e5e7eb 0%, #14f4c8 50%, #ff6b6b 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(17, 24, 39, 0.7) 0%,
+		rgba(31, 41, 55, 0.6) 50%,
+		rgba(20, 244, 200, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(17, 24, 39, 0.82) 0%,
+		rgba(31, 41, 55, 0.82) 100%
+	);
+}
+
+/* ===================================================================
+   TEMA 16: MONOCHROME LIGHT - Elegancia monocromática clara con acentos vibrantes
+   ================================================================== */
+:root[data-theme='monochrome-light'] {
+	/* Colores principales - BLANCOS Y GRISES CLAROS */
+	--color-bg-primary: #ffffff;
+	--color-bg-secondary: #f8fafc;
+	--color-bg-tertiary: rgba(248, 250, 252, 0.8);
+
+	/* Acentos - ROJO VIBRANTE CON COMPLEMENTARIOS */
+	--color-accent-primary: #ef4444;
+	--color-accent-secondary: #3b82f6;
+	--color-accent-hover: #dc2626;
+	--color-accent-warm: rgba(239, 68, 68, 0.1);
+
+	/* Texto - GRISES OSCUROS */
+	--color-text-primary: #1f2937;
+	--color-text-secondary: rgba(31, 41, 55, 0.8);
+	--color-text-muted: rgba(31, 41, 55, 0.6);
+	--color-text-dark: #111827;
+
+	/* Efectos y bordes - SUTILES CON CONTRASTE */
+	--color-glass-bg: rgba(255, 255, 255, 0.8);
+	--color-glass-border: rgba(239, 68, 68, 0.2);
+	--color-shadow-primary: rgba(239, 68, 68, 0.2);
+	--color-shadow-secondary: rgba(59, 130, 246, 0.15);
+
+	/* Gradientes - LIMPIOS CON CONTRASTE */
+	--gradient-primary: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+	--gradient-text: linear-gradient(135deg, #1f2937 0%, #ef4444 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.95) 0%,
+		rgba(248, 250, 252, 0.9) 50%,
+		rgba(239, 68, 68, 0.02) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.95) 0%,
+		rgba(248, 250, 252, 0.9) 100%
+	);
+}
+
+/* ===================================================================
+   TEMA 17: STEEL CONTRAST - Grises metálicos con acentos de alto contraste
+   ================================================================== */
+:root[data-theme='steel-contrast'] {
+	/* Colores principales - GRISES METÁLICOS */
+	--color-bg-primary: #374151;
+	--color-bg-secondary: #4b5563;
+	--color-bg-tertiary: rgba(75, 85, 99, 0.1);
+
+	/* Acentos - ÁMBAR BRILLANTE CON COMPLEMENTARIOS */
+	--color-accent-primary: #f59e0b;
+	--color-accent-secondary: #10b981;
+	--color-accent-hover: #d97706;
+	--color-accent-warm: rgba(245, 158, 11, 0.2);
+
+	/* Texto - BLANCOS Y GRISES CLAROS */
+	--color-text-primary: #f9fafb;
+	--color-text-secondary: rgba(249, 250, 251, 0.9);
+	--color-text-muted: rgba(249, 250, 251, 0.7);
+	--color-text-dark: #374151;
+
+	/* Efectos y bordes - METÁLICOS */
+	--color-glass-bg: rgba(75, 85, 99, 0.2);
+	--color-glass-border: rgba(245, 158, 11, 0.3);
+	--color-shadow-primary: rgba(245, 158, 11, 0.3);
+	--color-shadow-secondary: rgba(16, 185, 129, 0.2);
+
+	/* Gradientes - METÁLICOS CON CONTRASTE */
+	--gradient-primary: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+	--gradient-text: linear-gradient(135deg, #f9fafb 0%, #f59e0b 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(55, 65, 81, 0.9) 0%,
+		rgba(75, 85, 99, 0.8) 50%,
+		rgba(245, 158, 11, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(55, 65, 81, 0.9) 0%,
+		rgba(75, 85, 99, 0.85) 100%
+	);
+}
+
+/* ===================================================================
+   TEMA 18: FOREST TECH - Tecnología orgánica con tonos verdes naturales
+   ================================================================== */
+:root[data-theme='forest-tech'] {
+	/* Colores principales - VERDE BOSQUE */
+	--color-bg-primary: #064e3b;
+	--color-bg-secondary: #065f46;
+	--color-bg-tertiary: rgba(6, 95, 70, 0.1);
+
+	/* Acentos - VERDE TECNOLÓGICO */
+	--color-accent-primary: #10b981;
+	--color-accent-secondary: #34d399;
+	--color-accent-hover: #059669;
+	--color-accent-warm: rgba(16, 185, 129, 0.2);
+
+	/* Texto - VERDE CLARO NATURAL */
+	--color-text-primary: #ecfdf5;
+	--color-text-secondary: rgba(236, 253, 245, 0.9);
+	--color-text-muted: rgba(236, 253, 245, 0.7);
+	--color-text-dark: #064e3b;
+
+	/* Efectos y bordes - ORGÁNICOS */
+	--color-glass-bg: rgba(6, 95, 70, 0.2);
+	--color-glass-border: rgba(16, 185, 129, 0.3);
+	--color-shadow-primary: rgba(16, 185, 129, 0.4);
+	--color-shadow-secondary: rgba(52, 211, 153, 0.3);
+
+	/* Gradientes - NATURALES */
+	--gradient-primary: linear-gradient(135deg, #10b981 0%, #059669 100%);
+	--gradient-text: linear-gradient(135deg, #ecfdf5 0%, #10b981 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(6, 78, 59, 0.9) 0%,
+		rgba(6, 95, 70, 0.8) 50%,
+		rgba(16, 185, 129, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(135deg, rgba(6, 78, 59, 0.9) 0%, rgba(6, 95, 70, 0.85) 100%);
+}
+
+/* ===================================================================
+   TEMA 19: SLATE PROFESSIONAL - Elegancia profesional con grises pizarra
+   ================================================================== */
+:root[data-theme='slate-professional'] {
+	/* Colores principales - GRIS PIZARRA */
+	--color-bg-primary: #1e293b;
+	--color-bg-secondary: #334155;
+	--color-bg-tertiary: rgba(51, 65, 85, 0.1);
+
+	/* Acentos - AZUL PROFESIONAL */
+	--color-accent-primary: #0ea5e9;
+	--color-accent-secondary: #38bdf8;
+	--color-accent-hover: #0284c7;
+	--color-accent-warm: rgba(14, 165, 233, 0.2);
+
+	/* Texto - GRIS CLARO PROFESIONAL */
+	--color-text-primary: #f1f5f9;
+	--color-text-secondary: rgba(241, 245, 249, 0.9);
+	--color-text-muted: rgba(241, 245, 249, 0.7);
+	--color-text-dark: #1e293b;
+
+	/* Efectos y bordes - PROFESIONALES */
+	--color-glass-bg: rgba(51, 65, 85, 0.2);
+	--color-glass-border: rgba(14, 165, 233, 0.3);
+	--color-shadow-primary: rgba(14, 165, 233, 0.3);
+	--color-shadow-secondary: rgba(56, 189, 248, 0.2);
+
+	/* Gradientes - CORPORATIVOS */
+	--gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+	--gradient-text: linear-gradient(135deg, #f1f5f9 0%, #0ea5e9 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(30, 41, 59, 0.9) 0%,
+		rgba(51, 65, 85, 0.8) 50%,
+		rgba(14, 165, 233, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(30, 41, 59, 0.9) 0%,
+		rgba(51, 65, 85, 0.85) 100%
+	);
+}
+
+/* ===================================================================
+   TEMA 20: OCEAN DEPTH - Profundidades oceánicas con azules intensos
+   ================================================================== */
+:root[data-theme='ocean-depth'] {
+	/* Colores principales - AZUL OCÉANO */
+	--color-bg-primary: #0c4a6e;
+	--color-bg-secondary: #0369a1;
+	--color-bg-tertiary: rgba(3, 105, 161, 0.1);
+
+	/* Acentos - AZUL OCEÁNICO */
+	--color-accent-primary: #0284c7;
+	--color-accent-secondary: #0ea5e9;
+	--color-accent-hover: #0369a1;
+	--color-accent-warm: rgba(2, 132, 199, 0.2);
+
+	/* Texto - AZUL CLARO OCEÁNICO */
+	--color-text-primary: #e0f2fe;
+	--color-text-secondary: rgba(224, 242, 254, 0.9);
+	--color-text-muted: rgba(224, 242, 254, 0.7);
+	--color-text-dark: #0c4a6e;
+
+	/* Efectos y bordes - OCEÁNICOS */
+	--color-glass-bg: rgba(3, 105, 161, 0.2);
+	--color-glass-border: rgba(2, 132, 199, 0.3);
+	--color-shadow-primary: rgba(2, 132, 199, 0.4);
+	--color-shadow-secondary: rgba(14, 165, 233, 0.3);
+
+	/* Gradientes - PROFUNDIDADES */
+	--gradient-primary: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+	--gradient-text: linear-gradient(135deg, #e0f2fe 0%, #0284c7 100%);
+	--gradient-overlay: linear-gradient(
+		135deg,
+		rgba(12, 74, 110, 0.9) 0%,
+		rgba(3, 105, 161, 0.8) 50%,
+		rgba(2, 132, 199, 0.05) 100%
+	);
+	--gradient-section: linear-gradient(
+		135deg,
+		rgba(12, 74, 110, 0.9) 0%,
+		rgba(3, 105, 161, 0.85) 100%
+	);
+}
+
+/* ===================================================================
+   VARIABLES COMUNES PARA TODOS LOS TEMAS
+   ================================================================== */
+:root {
+	/* Fuentes */
+	--font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	--font-display:
+		'Dune Rise', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+	/* Espaciado */
+	--spacing-xs: 0.25rem;
+	--spacing-sm: 0.5rem;
+	--spacing-md: 1rem;
+	--spacing-lg: 1.5rem;
+	--spacing-xl: 2rem;
+	--spacing-2xl: 3rem;
+	--spacing-3xl: 4rem;
+
+	/* Bordes y radios */
+	--border-radius-sm: 8px;
+	--border-radius-md: 12px;
+	--border-radius-lg: 20px;
+	--border-radius-xl: 50px;
+
+	/* Sombras */
+	--shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+	--shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+	--shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.2);
+	--shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.4);
+
+	/* Transiciones */
+	--transition-fast: 0.15s ease;
+	--transition-normal: 0.3s ease;
+	--transition-slow: 0.6s ease;
+
+	/* Z-index */
+	--z-background: -10;
+	--z-overlay: -5;
+	--z-content: 1;
+	--z-header: 1000;
+	--z-modal: 1001;
+}
+
+/* ===================================================================
+   UTILIDADES DE TEMA
+   ================================================================== */
+
+/* Clase para elementos que necesitan transición suave entre temas */
+.theme-transition {
+	transition:
+		background-color var(--transition-normal),
+		border-color var(--transition-normal),
+		color var(--transition-normal),
+		box-shadow var(--transition-normal);
+}
+
+/* Clase para elementos de vidrio con el tema actual */
+.glass-effect {
+	background: var(--color-glass-bg);
+	border: 1px solid var(--color-glass-border);
+	backdrop-filter: blur(20px);
+}
+
+/* Clase para texto con gradiente del tema actual */
+.gradient-text {
+	background: var(--gradient-text);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* Clase para botones primarios del tema actual */
+.btn-theme-primary {
+	background: var(--gradient-primary);
+	color: var(--color-text-primary);
+	box-shadow: 0 8px 25px var(--color-shadow-primary);
+}
+
+.btn-theme-primary:hover {
+	box-shadow: 0 12px 35px var(--color-shadow-primary);
+}
+
+/* ===================================================================
+   COMPATIBILIDAD CON VARIABLES EXISTENTES
+   Mapeo de variables antiguas a nuevas para mantener compatibilidad
+   ================================================================== */
+:root {
+	/* Mapeo de variables existentes */
+	--primary-dark: var(--color-bg-primary);
+	--secondary-dark: var(--color-bg-secondary);
+	--accent-cyan: var(--color-accent-primary);
+	--light-cream: var(--color-text-primary);
+	--glass-bg: var(--color-glass-bg);
+	--glass-border: var(--color-glass-border);
+}

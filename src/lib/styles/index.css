@@ -1,6 +1,25 @@
 /* Main styles file - imports all other style files */
+
+/* ===================================================================
+   SISTEMA DE TEMAS Y BASE
+   ================================================================== */
+@import './themes.css';
 @import './base.css';
-@import './components.css';
 @import './layout.css';
 @import './utilities.css';
-@import './login-page.css'; 
+
+/* ===================================================================
+   COMPONENTES GENERALES
+   ================================================================== */
+@import './components.css';
+@import './shared-components.css';
+@import './login-page.css';
+
+/* ===================================================================
+   COMPONENTES ESPECÍFICOS DE SVELTE
+   ================================================================== */
+@import './profile-view.css';
+@import './configuration-view.css';
+@import './theme-selector.css';
+@import './account-menu.css';
+@import './profile-starfield.css';

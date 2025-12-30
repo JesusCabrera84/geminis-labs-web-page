@@ -1,4 +1,4 @@
-# GPS Tracker Web
+# Geminis Labs Web Page
 
 Sistema de seguimiento GPS en tiempo real construido con SvelteKit y Google Maps.
 
@@ -55,6 +55,9 @@ VITE_GOOGLE_MAPS_API_KEY=tu_api_key_de_google_maps
 
 # API Base URL (opcional)
 VITE_API_BASE_URL=http://localhost:3000/api
+
+# reCAPTCHA v3 Site Key
+VITE_RECAPTCHA_SITE_KEY=tu_site_key_de_recaptcha
 ```
 
 ### 2. Obtener Google Maps API Key
@@ -65,7 +68,21 @@ VITE_API_BASE_URL=http://localhost:3000/api
 4. Crea credenciales (API Key)
 5. Restringe la API Key a tu dominio por seguridad
 
-### 3. Configurar Fuentes Personalizadas
+### 3. Configurar reCAPTCHA v3
+
+El formulario de contacto está protegido con reCAPTCHA v3:
+
+1. Ve a [Google reCAPTCHA Admin](https://www.google.com/recaptcha/admin)
+2. Crea un nuevo sitio seleccionando **reCAPTCHA v3**
+3. Agrega tu dominio
+4. Copia la **Site Key** y agrégala a tu archivo `.env` como `VITE_RECAPTCHA_SITE_KEY`
+5. Guarda la **Secret Key** para validar en tu backend
+
+**Nota:** La Site Key es pública y se envía al navegador. La Secret Key debe mantenerse segura en el backend.
+
+Para más detalles, consulta [RECAPTCHA_SETUP.md](./RECAPTCHA_SETUP.md).
+
+### 4. Configurar Fuentes Personalizadas
 
 Coloca tus archivos de fuente en `static/fonts/`:
 
@@ -79,6 +96,7 @@ cp ruta/a/tu/Dune_Rise.ttf static/fonts/
 ```
 
 **Fuentes soportadas:**
+
 - **Dune Rise**: Aplicada automáticamente solo a elementos h1 (títulos principales)
 - **Fuentes del sistema**: Para el resto de elementos (h2, h3, p, etc.)
 - **Clases CSS disponibles**:
@@ -87,13 +105,13 @@ cp ruta/a/tu/Dune_Rise.ttf static/fonts/
   - `.font-dune-rise-subtitle`: Para subtítulos con Dune Rise
   - `.font-dune-rise-h1`: Para elementos h1 con Dune Rise
 
-### 4. Instalar Dependencias
+### 5. Instalar Dependencias
 
 ```bash
 npm install
 ```
 
-### 5. Ejecutar en Desarrollo
+### 6. Ejecutar en Desarrollo
 
 ```bash
 npm run dev
@@ -133,20 +151,57 @@ GET /api/devices/group/:id - Obtener dispositivos por grupo
 GET /api/devices/:id/location - Obtener ubicación de un dispositivo
 GET /api/groups - Obtener grupos disponibles
 GET /api/devices/:id/history - Obtener historial de un dispositivo
+POST /api/v1/contact/send-message - Enviar mensaje de contacto
+```
+
+#### Endpoint de Contacto
+
+**POST** `/api/v1/contact/send-message`
+
+Envía un mensaje de contacto desde el formulario de la página principal.
+
+**Request Body:**
+
+```json
+{
+	"nombre": "Juan Pérez",
+	"correo_electronico": "juan@example.com",
+	"telefono": "+52 123 456 7890",
+	"mensaje": "Estoy interesado en sus servicios...",
+	"recaptcha_token": "03AGdBq24PBCd9QF..."
+}
+```
+
+**Validaciones automáticas:**
+
+- `nombre`: Requerido, máximo 200 caracteres
+- `mensaje`: Requerido, máximo 5000 caracteres
+- `correo_electronico`: Opcional, formato de email válido
+- `telefono`: Opcional, entre 7 y 20 dígitos
+- Al menos uno de `correo_electronico` o `telefono` debe estar presente
+- `recaptcha_token`: Token de reCAPTCHA v3 (generado automáticamente)
+
+**Respuesta exitosa (200 OK):**
+
+```json
+{
+	"success": true,
+	"message": "Mensaje de contacto enviado exitosamente. Nos pondremos en contacto contigo pronto."
+}
 ```
 
 ### Formato de Datos Esperado
 
 ```json
 {
-  "id": "1",
-  "name": "Equipo 1",
-  "lat": 19.4326,
-  "lng": -99.1332,
-  "lastUpdate": "2024-01-15T10:30:00Z",
-  "speed": 45,
-  "status": "active",
-  "icon": "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
+	"id": "1",
+	"name": "Equipo 1",
+	"lat": 19.4326,
+	"lng": -99.1332,
+	"lastUpdate": "2024-01-15T10:30:00Z",
+	"speed": 45,
+	"status": "active",
+	"icon": "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
 }
 ```
 

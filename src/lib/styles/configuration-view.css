@@ -1,0 +1,398 @@
+/* ===================================================================
+   CONFIGURATION VIEW - Estilos para ConfigurationView.svelte
+   ================================================================== */
+
+/* ===================================================================
+   CONTENEDOR PRINCIPAL
+   ================================================================== */
+.config-view {
+	transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.config-view.animate-in {
+	animation: configViewFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes configViewFadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* ===================================================================
+   ENCABEZADO DE CONFIGURACIÓN
+   ================================================================== */
+.config-header {
+	text-align: center;
+	margin-bottom: 2.5rem;
+	padding: 1.5rem 0;
+}
+
+.config-title {
+	font-size: 2.75rem;
+	font-weight: 200;
+	color: var(--color-text-primary);
+	margin-bottom: 0.75rem;
+	letter-spacing: -0.02em;
+	line-height: 1.1;
+}
+
+.title-accent {
+	background: var(--gradient-text);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	font-weight: 400;
+	position: relative;
+}
+
+.title-accent::after {
+	content: '';
+	position: absolute;
+	bottom: -4px;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: var(--gradient-primary);
+	opacity: 0.6;
+	border-radius: 1px;
+}
+
+.config-subtitle {
+	font-size: 1.125rem;
+	color: var(--color-text-muted);
+	font-weight: 300;
+	line-height: 1.5;
+	margin: 0 auto;
+	max-width: 500px;
+}
+
+/* ===================================================================
+   ACCESO RESTRINGIDO
+   ================================================================== */
+.restricted-access {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 40vh;
+}
+
+.restricted-card {
+	text-align: center;
+	padding: 3rem;
+	background: var(--color-glass-bg);
+	backdrop-filter: blur(20px);
+	border: 1px solid var(--color-glass-border);
+	border-radius: 24px;
+	box-shadow:
+		0 8px 32px rgba(0, 0, 0, 0.1),
+		0 0 0 1px rgba(255, 255, 255, 0.05);
+	max-width: 500px;
+	width: 100%;
+}
+
+.restricted-icon {
+	width: 64px;
+	height: 64px;
+	margin: 0 auto 1.5rem;
+	color: var(--color-text-muted);
+	opacity: 0.6;
+}
+
+.restricted-title {
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: var(--color-text-primary);
+	margin-bottom: 1rem;
+}
+
+.restricted-message {
+	font-size: 1rem;
+	color: var(--color-text-muted);
+	line-height: 1.6;
+	margin-bottom: 2rem;
+}
+
+.restricted-contact {
+	font-size: 0.875rem;
+	color: var(--color-text-secondary);
+	opacity: 0.8;
+}
+
+/* ===================================================================
+   SECCIONES DE CONFIGURACIÓN
+   ================================================================== */
+.config-sections {
+	display: grid;
+	gap: 2rem;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.config-section {
+	background: var(--color-glass-bg);
+	backdrop-filter: blur(20px);
+	border: 1px solid var(--color-glass-border);
+	border-radius: 20px;
+	padding: 2rem;
+	transition: all 0.3s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+.config-section::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, var(--color-accent-primary), transparent);
+	opacity: 0.4;
+}
+
+.config-section:hover {
+	transform: translateY(-2px);
+	box-shadow:
+		0 12px 48px rgba(0, 0, 0, 0.15),
+		0 0 0 1px var(--color-glass-border);
+}
+
+.section-header {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.section-icon {
+	width: 24px;
+	height: 24px;
+	color: var(--color-accent-primary);
+}
+
+.config-section-title {
+	font-size: 1.25rem;
+	font-weight: 500;
+	color: var(--color-text-primary);
+	margin: 0;
+}
+
+.section-description {
+	font-size: 0.875rem;
+	color: var(--color-text-muted);
+	margin-bottom: 1.5rem;
+	line-height: 1.5;
+}
+
+/* ===================================================================
+   CONTROLES DE CONFIGURACIÓN
+   ================================================================== */
+.config-controls {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.control-group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.control-label {
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--color-text-secondary);
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.control-input {
+	padding: 0.75rem 1rem;
+	background: var(--color-glass-bg);
+	border: 1px solid var(--color-glass-border);
+	border-radius: 12px;
+	color: var(--color-text-primary);
+	font-size: 0.875rem;
+	transition: all 0.3s ease;
+}
+
+.control-input:focus {
+	outline: none;
+	border-color: var(--color-accent-primary);
+	box-shadow: 0 0 0 3px rgba(var(--color-accent-primary), 0.1);
+}
+
+.control-select {
+	padding: 0.75rem 1rem;
+	background: var(--color-glass-bg);
+	border: 1px solid var(--color-glass-border);
+	border-radius: 12px;
+	color: var(--color-text-primary);
+	font-size: 0.875rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.control-select:focus {
+	outline: none;
+	border-color: var(--color-accent-primary);
+	box-shadow: 0 0 0 3px rgba(var(--color-accent-primary), 0.1);
+}
+
+.control-toggle {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
+	background: var(--color-glass-bg);
+	border: 1px solid var(--color-glass-border);
+	border-radius: 12px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.control-toggle:hover {
+	background: var(--color-glass-border);
+}
+
+.toggle-switch {
+	position: relative;
+	width: 48px;
+	height: 24px;
+	background: var(--color-glass-border);
+	border-radius: 12px;
+	transition: all 0.3s ease;
+}
+
+.toggle-switch.active {
+	background: var(--color-accent-primary);
+}
+
+.toggle-switch::after {
+	content: '';
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 20px;
+	height: 20px;
+	background: white;
+	border-radius: 50%;
+	transition: all 0.3s ease;
+}
+
+.toggle-switch.active::after {
+	transform: translateX(24px);
+}
+
+/* ===================================================================
+   BOTONES DE ACCIÓN
+   ================================================================== */
+.config-actions {
+	display: flex;
+	gap: 1rem;
+	justify-content: flex-end;
+	margin-top: 2rem;
+	padding-top: 2rem;
+	border-top: 1px solid var(--color-glass-border);
+}
+
+.action-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1.5rem;
+	border: none;
+	border-radius: 12px;
+	font-size: 0.875rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-decoration: none;
+}
+
+.action-button.primary {
+	background: var(--gradient-primary);
+	color: white;
+	box-shadow: 0 4px 12px var(--color-shadow-primary);
+}
+
+.action-button.primary:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px var(--color-shadow-secondary);
+}
+
+.action-button.secondary {
+	background: var(--color-glass-bg);
+	color: var(--color-text-primary);
+	border: 1px solid var(--color-glass-border);
+}
+
+.action-button.secondary:hover {
+	background: var(--color-glass-border);
+	box-shadow: 0 4px 12px var(--color-shadow-primary);
+}
+
+.button-icon {
+	width: 16px;
+	height: 16px;
+}
+
+/* ===================================================================
+   RESPONSIVE DESIGN
+   ================================================================== */
+@media (max-width: 768px) {
+	.config-view {
+		padding: 1rem;
+	}
+
+	.config-title {
+		font-size: 2rem;
+	}
+
+	.config-section {
+		padding: 1.5rem;
+	}
+
+	.config-actions {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.restricted-card {
+		padding: 2rem;
+		margin: 1rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.config-header {
+		padding: 1rem 0;
+	}
+
+	.config-title {
+		font-size: 1.75rem;
+	}
+
+	.config-section {
+		padding: 1rem;
+		border-radius: 16px;
+	}
+
+	.section-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.5rem;
+	}
+
+	.restricted-card {
+		padding: 1.5rem;
+	}
+}

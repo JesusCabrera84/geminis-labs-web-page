@@ -1,0 +1,825 @@
+/* ===================================================================
+   FONDO ESTRELLADO ESPECÍFICO PARA MI PERFIL - GEMINIS LABS
+   Cielo estrellado con efecto parallax y reacción al cursor
+   Solo se activa en la vista "Mi Perfil"
+   ================================================================== */
+
+/* Contenedor del fondo estrellado para Mi Perfil */
+.profile-starfield {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	overflow: hidden;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-starfield.active {
+	opacity: 1;
+}
+
+/* Gradiente base espacial profundo - Aumentado brillo ~15% */
+.starfield-base-gradient {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: radial-gradient(
+		ellipse at 30% 40%,
+		#1a3449 0%,
+		/* #142a3b + 15% brillo */ #152031 40%,
+		/* #0d1b2a + 15% brillo */ #0f1a26 80%,
+		/* #0a1520 + 15% brillo */ #0d151e 100% /* #081218 + 15% brillo */
+	);
+	background-attachment: fixed;
+	/* Filtro adicional para aumentar luminosidad general */
+	filter: brightness(1.15) contrast(1.05);
+}
+
+/* Overlay diagonal para profundidad */
+.starfield-depth-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		135deg,
+		rgba(13, 27, 42, 0.6) 0%,
+		rgba(20, 42, 59, 0.4) 30%,
+		rgba(0, 166, 192, 0.02) 70%,
+		rgba(33, 230, 140, 0.01) 100%
+	);
+	mix-blend-mode: overlay;
+}
+
+/* Capa de neblina dinámica - se adapta al tema activo */
+.starfield-dynamic-haze {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background:
+		radial-gradient(
+			ellipse at 50% 60%,
+			var(--starfield-haze-primary) 0%,
+			var(--starfield-haze-secondary) 30%,
+			var(--starfield-haze-tertiary) 60%,
+			rgba(0, 0, 0, 0) 80%
+		),
+		radial-gradient(ellipse at 30% 40%, var(--starfield-haze-secondary) 0%, transparent 50%),
+		radial-gradient(ellipse at 70% 30%, var(--starfield-haze-tertiary) 0%, transparent 40%);
+	animation: dynamic-mist-drift var(--starfield-haze-animation-duration) ease-in-out infinite;
+	opacity: var(--starfield-haze-intensity);
+	pointer-events: none;
+	transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+	mix-blend-mode: normal;
+}
+
+/* Capa adicional de brillo ambiental dinámico */
+.starfield-ambient-glow {
+	position: absolute;
+	top: -10%;
+	left: -10%;
+	width: 120%;
+	height: 120%;
+	background:
+		linear-gradient(
+			45deg,
+			var(--starfield-haze-secondary) 0%,
+			transparent 25%,
+			var(--starfield-haze-tertiary) 50%,
+			transparent 75%,
+			var(--starfield-haze-secondary) 100%
+		),
+		linear-gradient(
+			135deg,
+			var(--starfield-haze-primary) 0%,
+			transparent 30%,
+			var(--starfield-haze-secondary) 70%,
+			transparent 100%
+		);
+	animation: ambient-rotate 60s linear infinite;
+	opacity: calc(var(--starfield-haze-intensity) * 0.6);
+	pointer-events: none;
+	transform-origin: center center;
+	transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+	mix-blend-mode: overlay;
+}
+
+/* ===================================================================
+   CAPA 1: ESTRELLAS LEJANAS (Background Stars)
+   Movimiento casi imperceptible, parallax mínimo
+   ================================================================== */
+.stars-background-layer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 120%;
+	height: 120%;
+	background-image:
+		radial-gradient(1px 1px at 15px 25px, rgba(255, 255, 255, 0.6), transparent),
+		radial-gradient(1px 1px at 45px 65px, rgba(200, 220, 255, 0.4), transparent),
+		radial-gradient(1px 1px at 85px 35px, rgba(255, 255, 255, 0.5), transparent),
+		radial-gradient(1px 1px at 125px 75px, rgba(180, 200, 255, 0.3), transparent),
+		radial-gradient(1px 1px at 165px 25px, rgba(255, 255, 255, 0.7), transparent),
+		radial-gradient(1px 1px at 205px 55px, rgba(220, 230, 255, 0.4), transparent),
+		radial-gradient(1px 1px at 245px 85px, rgba(255, 255, 255, 0.6), transparent),
+		radial-gradient(1px 1px at 285px 15px, rgba(190, 210, 255, 0.5), transparent),
+		radial-gradient(1px 1px at 325px 65px, rgba(255, 255, 255, 0.4), transparent),
+		radial-gradient(1px 1px at 365px 35px, rgba(210, 225, 255, 0.6), transparent),
+		radial-gradient(1px 1px at 405px 75px, rgba(255, 255, 255, 0.5), transparent),
+		radial-gradient(1px 1px at 445px 5px, rgba(185, 205, 255, 0.4), transparent),
+		radial-gradient(1px 1px at 485px 45px, rgba(255, 255, 255, 0.7), transparent),
+		radial-gradient(1px 1px at 525px 85px, rgba(200, 220, 255, 0.3), transparent),
+		radial-gradient(1px 1px at 565px 20px, rgba(255, 255, 255, 0.6), transparent),
+		radial-gradient(1px 1px at 605px 60px, rgba(175, 195, 255, 0.5), transparent),
+		radial-gradient(1px 1px at 645px 30px, rgba(255, 255, 255, 0.4), transparent),
+		radial-gradient(1px 1px at 685px 70px, rgba(220, 235, 255, 0.6), transparent),
+		radial-gradient(1px 1px at 725px 10px, rgba(255, 255, 255, 0.5), transparent),
+		radial-gradient(1px 1px at 765px 50px, rgba(190, 210, 255, 0.4), transparent);
+	background-repeat: repeat;
+	background-size: 800px 600px;
+	animation: drift-background-stars 60s linear infinite;
+	opacity: 0.4;
+	will-change: transform;
+}
+
+/* ===================================================================
+   CAPA 2: ESTRELLAS MEDIAS (Mid Stars)
+   Movimiento diagonal lento, parallax medio
+   ================================================================== */
+.stars-mid-layer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 130%;
+	height: 130%;
+	background-image:
+		radial-gradient(2px 2px at 80px 120px, rgba(0, 166, 192, 0.8), transparent),
+		radial-gradient(2px 2px at 160px 60px, rgba(255, 255, 255, 0.7), transparent),
+		radial-gradient(2px 2px at 240px 180px, rgba(0, 166, 192, 0.6), transparent),
+		radial-gradient(2px 2px at 320px 90px, rgba(200, 220, 255, 0.8), transparent),
+		radial-gradient(2px 2px at 400px 150px, rgba(0, 166, 192, 0.7), transparent),
+		radial-gradient(2px 2px at 480px 30px, rgba(255, 255, 255, 0.6), transparent),
+		radial-gradient(2px 2px at 560px 210px, rgba(0, 166, 192, 0.8), transparent),
+		radial-gradient(2px 2px at 640px 120px, rgba(180, 200, 255, 0.7), transparent),
+		radial-gradient(2px 2px at 720px 45px, rgba(0, 166, 192, 0.6), transparent),
+		radial-gradient(2px 2px at 800px 165px, rgba(255, 255, 255, 0.8), transparent),
+		radial-gradient(2px 2px at 880px 75px, rgba(0, 166, 192, 0.7), transparent),
+		radial-gradient(2px 2px at 960px 195px, rgba(210, 225, 255, 0.6), transparent),
+		radial-gradient(2px 2px at 1040px 105px, rgba(0, 166, 192, 0.8), transparent),
+		radial-gradient(2px 2px at 1120px 15px, rgba(255, 255, 255, 0.7), transparent),
+		radial-gradient(2px 2px at 1200px 225px, rgba(0, 166, 192, 0.6), transparent);
+	background-repeat: repeat;
+	background-size: 1280px 960px;
+	animation: drift-mid-stars 40s linear infinite;
+	opacity: 0.6;
+	will-change: transform;
+}
+
+/* Estrellas parpadeantes en capa media */
+.stars-mid-layer::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image:
+		radial-gradient(2px 2px at 25% 35%, rgba(0, 166, 192, 1), transparent),
+		radial-gradient(2px 2px at 65% 15%, rgba(255, 255, 255, 1), transparent),
+		radial-gradient(2px 2px at 45% 75%, rgba(0, 166, 192, 1), transparent),
+		radial-gradient(2px 2px at 85% 55%, rgba(33, 230, 140, 0.8), transparent);
+	animation: twinkle-mid 3s ease-in-out infinite alternate;
+}
+
+/* ===================================================================
+   CAPA 3: ESTRELLAS CERCANAS (Foreground Stars)
+   Movimiento parallax marcado, elementos brillantes
+   ================================================================== */
+.stars-foreground-layer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 140%;
+	height: 140%;
+	background-image:
+		radial-gradient(
+			3px 3px at 150px 80px,
+			rgba(0, 166, 192, 1),
+			rgba(0, 166, 192, 0.2) 50%,
+			transparent
+		),
+		radial-gradient(
+			4px 4px at 350px 220px,
+			rgba(255, 255, 255, 1),
+			rgba(255, 255, 255, 0.1) 50%,
+			transparent
+		),
+		radial-gradient(
+			3px 3px at 550px 120px,
+			rgba(0, 166, 192, 0.9),
+			rgba(0, 166, 192, 0.1) 50%,
+			transparent
+		),
+		radial-gradient(
+			5px 5px at 750px 180px,
+			rgba(33, 230, 140, 0.8),
+			rgba(33, 230, 140, 0.05) 50%,
+			transparent
+		),
+		radial-gradient(
+			3px 3px at 950px 50px,
+			rgba(0, 166, 192, 1),
+			rgba(0, 166, 192, 0.2) 50%,
+			transparent
+		),
+		radial-gradient(
+			4px 4px at 1150px 250px,
+			rgba(255, 255, 255, 0.9),
+			rgba(255, 255, 255, 0.1) 50%,
+			transparent
+		),
+		radial-gradient(
+			3px 3px at 1350px 130px,
+			rgba(0, 166, 192, 0.8),
+			rgba(0, 166, 192, 0.1) 50%,
+			transparent
+		),
+		radial-gradient(
+			6px 6px at 1550px 60px,
+			rgba(33, 230, 140, 1),
+			rgba(33, 230, 140, 0.05) 50%,
+			transparent
+		);
+	background-repeat: repeat;
+	background-size: 1600px 1200px;
+	animation: drift-foreground-stars 25s linear infinite;
+	opacity: 0.8;
+	will-change: transform;
+}
+
+/* Destellos ocasionales en estrellas cercanas */
+.stars-foreground-layer::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image:
+		radial-gradient(
+			4px 4px at 20% 25%,
+			rgba(0, 166, 192, 1),
+			rgba(0, 166, 192, 0.3) 30%,
+			transparent
+		),
+		radial-gradient(
+			5px 5px at 70% 65%,
+			rgba(255, 255, 255, 1),
+			rgba(255, 255, 255, 0.2) 30%,
+			transparent
+		),
+		radial-gradient(
+			3px 3px at 40% 85%,
+			rgba(33, 230, 140, 1),
+			rgba(33, 230, 140, 0.3) 30%,
+			transparent
+		);
+	animation: stellar-flare 6s ease-in-out infinite;
+}
+
+/* ===================================================================
+   LOGO DE GEMINIS LABS CENTRAL
+   Translúcido, rotación lenta, pulso energético
+   ================================================================== */
+.geminis-logo-cosmic {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 55vw;
+	height: 55vw;
+	max-width: 600px;
+	max-height: 600px;
+	opacity: 0.12;
+	background: radial-gradient(
+		circle,
+		rgba(0, 166, 192, 0.6) 0%,
+		rgba(0, 168, 135, 0.4) 25%,
+		rgba(33, 230, 140, 0.3) 50%,
+		rgba(0, 166, 192, 0.15) 75%,
+		rgba(33, 230, 140, 0.05) 90%,
+		transparent 100%
+	);
+	border-radius: 50%;
+	animation: cosmic-pulse-enhanced 8s ease-in-out infinite;
+	/* Brillo adicional sincronizado */
+	box-shadow:
+		0 0 60px rgba(0, 166, 192, 0.3),
+		0 0 120px rgba(33, 230, 140, 0.2),
+		inset 0 0 40px rgba(0, 166, 192, 0.1);
+	pointer-events: none;
+	will-change: transform, opacity;
+}
+
+.geminis-logo-cosmic::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 65%;
+	height: 65%;
+	background: url('/img/geminis-labs-logo-short.png') no-repeat center center;
+	background-size: contain;
+	opacity: 0.7;
+	animation: logo-cosmic-rotate 45s linear infinite;
+	filter: drop-shadow(0 0 20px rgba(0, 166, 192, 0.3));
+}
+
+/* Anillo energético alrededor del logo */
+.geminis-logo-cosmic::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 85%;
+	height: 85%;
+	border: 1px solid rgba(0, 166, 192, 0.2);
+	border-radius: 50%;
+	border-top: 1px solid rgba(33, 230, 140, 0.4);
+	border-right: 1px solid transparent;
+	animation: energy-ring-rotate 30s linear infinite reverse;
+}
+
+/* ===================================================================
+   CONSTELACIÓN DE GÉMINIS
+   Líneas sutiles conectando estrellas específicas
+   ================================================================== */
+.gemini-constellation-lines {
+	position: absolute;
+	top: 15%;
+	left: 25%;
+	width: 50%;
+	height: 70%;
+	opacity: 0.12;
+	animation: constellation-pulse 8s ease-in-out infinite;
+	pointer-events: none;
+}
+
+.constellation-connection {
+	position: absolute;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		rgba(0, 166, 192, 0.6) 20%,
+		rgba(0, 166, 192, 0.8) 50%,
+		rgba(33, 230, 140, 0.6) 80%,
+		transparent 100%
+	);
+	transform-origin: left center;
+	height: 1px;
+	filter: blur(0.5px);
+}
+
+/* Líneas específicas de la constelación */
+.connection-1 {
+	top: 20%;
+	left: 15%;
+	width: 140px;
+	transform: rotate(35deg);
+	animation-delay: 0s;
+}
+
+.connection-2 {
+	top: 35%;
+	left: 40%;
+	width: 100px;
+	transform: rotate(-25deg);
+	animation-delay: 3s;
+}
+
+.connection-3 {
+	top: 50%;
+	left: 10%;
+	width: 120px;
+	transform: rotate(55deg);
+	animation-delay: 6s;
+}
+
+.connection-4 {
+	top: 65%;
+	left: 35%;
+	width: 110px;
+	transform: rotate(-40deg);
+	animation-delay: 9s;
+}
+
+.connection-5 {
+	top: 80%;
+	left: 55%;
+	width: 90px;
+	transform: rotate(15deg);
+	animation-delay: 12s;
+}
+
+/* Nodos de conexión (estrellas principales) */
+.constellation-node {
+	position: absolute;
+	width: 3px;
+	height: 3px;
+	background: rgba(0, 166, 192, 0.9);
+	border-radius: 50%;
+	box-shadow: 0 0 8px rgba(0, 166, 192, 0.6);
+	animation: node-twinkle 4s ease-in-out infinite;
+}
+
+.node-1 {
+	top: 20%;
+	left: 15%;
+	animation-delay: 0s;
+}
+.node-2 {
+	top: 35%;
+	left: 40%;
+	animation-delay: 2s;
+}
+.node-3 {
+	top: 50%;
+	left: 10%;
+	animation-delay: 4s;
+}
+.node-4 {
+	top: 65%;
+	left: 35%;
+	animation-delay: 6s;
+}
+.node-5 {
+	top: 80%;
+	left: 55%;
+	animation-delay: 8s;
+}
+
+/* ===================================================================
+   ANIMACIONES KEYFRAMES
+   ================================================================== */
+
+/* Movimiento de capas de estrellas */
+@keyframes drift-background-stars {
+	0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(-100px, -50px);
+	}
+}
+
+@keyframes drift-mid-stars {
+	0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(-200px, -100px);
+	}
+}
+
+@keyframes drift-foreground-stars {
+	0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(-300px, -150px);
+	}
+}
+
+/* Parpadeo de estrellas */
+@keyframes twinkle-mid {
+	0%,
+	100% {
+		opacity: 0.3;
+	}
+	25% {
+		opacity: 0.8;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	75% {
+		opacity: 1;
+	}
+}
+
+@keyframes stellar-flare {
+	0%,
+	90%,
+	100% {
+		opacity: 0;
+	}
+	5%,
+	15% {
+		opacity: 0.8;
+	}
+	10% {
+		opacity: 1;
+	}
+}
+
+/* Logo central mejorado */
+@keyframes cosmic-pulse-enhanced {
+	0%,
+	100% {
+		opacity: 0.08;
+		transform: translate(-50%, -50%) scale(1);
+		box-shadow:
+			0 0 60px rgba(0, 166, 192, 0.2),
+			0 0 120px rgba(33, 230, 140, 0.1),
+			inset 0 0 40px rgba(0, 166, 192, 0.05);
+	}
+	25% {
+		opacity: 0.15;
+		transform: translate(-50%, -50%) scale(1.04);
+		box-shadow:
+			0 0 80px rgba(0, 166, 192, 0.4),
+			0 0 160px rgba(33, 230, 140, 0.25),
+			inset 0 0 60px rgba(0, 166, 192, 0.15);
+	}
+	50% {
+		opacity: 0.18;
+		transform: translate(-50%, -50%) scale(1.08);
+		box-shadow:
+			0 0 100px rgba(0, 166, 192, 0.5),
+			0 0 200px rgba(33, 230, 140, 0.3),
+			inset 0 0 80px rgba(0, 166, 192, 0.2);
+	}
+	75% {
+		opacity: 0.15;
+		transform: translate(-50%, -50%) scale(1.04);
+		box-shadow:
+			0 0 80px rgba(0, 166, 192, 0.4),
+			0 0 160px rgba(33, 230, 140, 0.25),
+			inset 0 0 60px rgba(0, 166, 192, 0.15);
+	}
+}
+
+/* Animación de neblina dinámica */
+@keyframes dynamic-mist-drift {
+	0%,
+	100% {
+		transform: translate(0, 0) scale(1);
+		filter: brightness(1);
+	}
+	25% {
+		transform: translate(20px, -15px) scale(1.05);
+		filter: brightness(1.2);
+	}
+	50% {
+		transform: translate(-10px, 10px) scale(0.95);
+		filter: brightness(0.8);
+	}
+	75% {
+		transform: translate(15px, 5px) scale(1.02);
+		filter: brightness(1.1);
+	}
+}
+
+/* Rotación ambiental */
+@keyframes ambient-rotate {
+	0% {
+		transform: rotate(0deg) scale(1);
+	}
+	100% {
+		transform: rotate(360deg) scale(1);
+	}
+}
+
+@keyframes logo-cosmic-rotate {
+	0% {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+	100% {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+@keyframes energy-ring-rotate {
+	0% {
+		transform: translate(-50%, -50%) rotate(0deg);
+	}
+	100% {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+/* Constelación */
+@keyframes constellation-pulse {
+	0%,
+	100% {
+		opacity: 0.08;
+	}
+	50% {
+		opacity: 0.18;
+	}
+}
+
+@keyframes node-twinkle {
+	0%,
+	100% {
+		opacity: 0.6;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.3);
+		box-shadow: 0 0 12px rgba(0, 166, 192, 0.8);
+	}
+}
+
+/* ===================================================================
+   CLASES PARA INTERACCIÓN CON CURSOR
+   ================================================================== */
+
+/* Estas clases se aplicarán dinámicamente con JavaScript */
+.cursor-parallax-bg {
+	transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cursor-parallax-mid {
+	transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cursor-parallax-fg {
+	transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.cursor-parallax-logo {
+	transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ===================================================================
+   RESPONSIVE DESIGN
+   ================================================================== */
+
+/* Tabletas */
+@media (max-width: 1024px) {
+	.geminis-logo-cosmic {
+		width: 65vw;
+		height: 65vw;
+		opacity: 0.06;
+	}
+
+	.stars-background-layer {
+		background-size: 600px 450px;
+	}
+	.stars-mid-layer {
+		background-size: 960px 720px;
+	}
+	.stars-foreground-layer {
+		background-size: 1200px 900px;
+	}
+
+	.constellation-connection {
+		height: 0.8px;
+	}
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+	.geminis-logo-cosmic {
+		width: 75vw;
+		height: 75vw;
+		opacity: 0.05;
+	}
+
+	.gemini-constellation-lines {
+		opacity: 0.08;
+	}
+
+	.stars-background-layer {
+		background-size: 400px 300px;
+	}
+	.stars-mid-layer {
+		background-size: 640px 480px;
+	}
+	.stars-foreground-layer {
+		background-size: 800px 600px;
+	}
+
+	.constellation-connection {
+		height: 0.5px;
+		filter: blur(0.3px);
+	}
+
+	.constellation-node {
+		width: 2px;
+		height: 2px;
+	}
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+	.geminis-logo-cosmic {
+		width: 85vw;
+		height: 85vw;
+		opacity: 0.04;
+	}
+
+	.stars-background-layer {
+		opacity: 0.3;
+	}
+	.stars-mid-layer {
+		opacity: 0.4;
+	}
+	.stars-foreground-layer {
+		opacity: 0.6;
+	}
+}
+
+/* ===================================================================
+   OPTIMIZACIONES DE RENDIMIENTO
+   ================================================================== */
+
+/* Usar will-change para optimizar animaciones */
+.stars-background-layer,
+.stars-mid-layer,
+.stars-foreground-layer,
+.geminis-logo-cosmic {
+	will-change: transform, opacity;
+}
+
+/* Optimizaciones para dispositivos de alto rendimiento */
+@media (min-width: 1024px) and (min-resolution: 2dppx) {
+	.stars-background-layer {
+		animation: drift-background-stars-optimized 60s linear infinite;
+	}
+	.stars-mid-layer {
+		animation: drift-mid-stars-optimized 40s linear infinite;
+	}
+	.stars-foreground-layer {
+		animation: drift-foreground-stars-optimized 25s linear infinite;
+	}
+}
+
+@keyframes drift-background-stars-optimized {
+	0% {
+		transform: translate3d(0, 0, 0);
+	}
+	100% {
+		transform: translate3d(-100px, -50px, 0);
+	}
+}
+
+@keyframes drift-mid-stars-optimized {
+	0% {
+		transform: translate3d(0, 0, 0);
+	}
+	100% {
+		transform: translate3d(-200px, -100px, 0);
+	}
+}
+
+@keyframes drift-foreground-stars-optimized {
+	0% {
+		transform: translate3d(0, 0, 0);
+	}
+	100% {
+		transform: translate3d(-300px, -150px, 0);
+	}
+}
+
+/* ===================================================================
+   ACCESIBILIDAD
+   ================================================================== */
+
+/* Reducir animaciones para usuarios sensibles al movimiento */
+@media (prefers-reduced-motion: reduce) {
+	.profile-starfield * {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+
+	.profile-starfield {
+		opacity: 0.3;
+	}
+
+	.stars-background-layer,
+	.stars-mid-layer,
+	.stars-foreground-layer {
+		animation: none;
+		opacity: 0.2;
+	}
+
+	.geminis-logo-cosmic {
+		animation: none;
+		opacity: 0.04;
+	}
+}

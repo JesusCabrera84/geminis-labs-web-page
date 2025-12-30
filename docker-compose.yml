@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  tracker-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Variables de build-time que se inyectan durante la construcción
+        - VITE_API_BASE_URL=${VITE_API_BASE_URL:-http://localhost:8080}
+        - VITE_RECAPTCHA_SITE_KEY=${VITE_RECAPTCHA_SITE_KEY}
+    container_name: tracker-web
+    restart: unless-stopped
+    ports:
+      - '3330:3330'
+    environment:
+      # Variables de runtime
+      - NODE_ENV=production
+      - PORT=3330
+      - HOST=0.0.0.0
+    networks:
+      - tracker-network
+
+networks:
+  tracker-network:
+    driver: bridge

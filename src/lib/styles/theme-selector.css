@@ -1,0 +1,411 @@
+/* ===================================================================
+   THEME SELECTOR - Estilos para ThemeSelector.svelte
+   ================================================================== */
+
+/* ===================================================================
+   CONTENEDOR PRINCIPAL
+   ================================================================== */
+.theme-selector {
+	position: relative;
+	z-index: 1000;
+}
+
+.theme-selector-container {
+	background: var(--color-glass-bg);
+	backdrop-filter: blur(20px);
+	border: 1px solid var(--color-glass-border);
+	border-radius: 16px;
+	padding: 1.5rem;
+	box-shadow:
+		0 8px 32px rgba(0, 0, 0, 0.1),
+		0 0 0 1px rgba(255, 255, 255, 0.05);
+	transition: all 0.3s ease;
+	max-width: 400px;
+	width: 100%;
+}
+
+.theme-selector-container:hover {
+	transform: translateY(-2px);
+	box-shadow:
+		0 12px 48px rgba(0, 0, 0, 0.15),
+		0 0 0 1px var(--color-glass-border);
+}
+
+/* ===================================================================
+   ENCABEZADO DEL SELECTOR
+   ================================================================== */
+.selector-header {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	margin-bottom: 1.5rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid var(--color-glass-border);
+}
+
+.selector-icon {
+	width: 24px;
+	height: 24px;
+	color: var(--color-accent-primary);
+}
+
+.selector-title {
+	font-size: 1.125rem;
+	font-weight: 500;
+	color: var(--color-text-primary);
+	margin: 0;
+}
+
+.selector-subtitle {
+	font-size: 0.875rem;
+	color: var(--color-text-muted);
+	margin: 0;
+	line-height: 1.4;
+}
+
+/* ===================================================================
+   GRID DE TEMAS
+   ================================================================== */
+.themes-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+	gap: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.theme-option {
+	position: relative;
+	aspect-ratio: 1;
+	border-radius: 12px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	overflow: hidden;
+	border: 2px solid transparent;
+	background: var(--color-glass-bg);
+}
+
+.theme-option:hover {
+	transform: scale(1.05);
+	box-shadow: 0 4px 12px var(--color-shadow-primary);
+}
+
+.theme-option.active {
+	border-color: var(--color-accent-primary);
+	box-shadow:
+		0 0 0 3px rgba(var(--color-accent-primary), 0.2),
+		0 4px 12px var(--color-shadow-primary);
+}
+
+.theme-preview {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+}
+
+/* ===================================================================
+   PREVISUALIZACIONES DE TEMAS ESPECÍFICOS
+   ================================================================== */
+
+/* Tema Default */
+.theme-preview.default {
+	background: linear-gradient(135deg, #222831 0%, #283b48 100%);
+}
+
+.theme-preview.default::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 30%;
+	background: linear-gradient(135deg, #00a6c0 0%, #21e68c 100%);
+	opacity: 0.8;
+}
+
+/* Tema Dual Tech Human */
+.theme-preview.dual-tech-human {
+	background: linear-gradient(135deg, #0d1b2a 0%, #142a3b 100%);
+}
+
+.theme-preview.dual-tech-human::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 30%;
+	background: linear-gradient(135deg, #2dd4bf 0%, #21e68c 100%);
+	opacity: 0.8;
+}
+
+/* Tema Vibrant */
+.theme-preview.vibrant {
+	background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+}
+
+.theme-preview.vibrant::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 30%;
+	background: linear-gradient(135deg, #14f4c8 0%, #ff6b6b 50%, #c3f73a 100%);
+	opacity: 0.8;
+}
+
+/* Tema Warm Tech */
+.theme-preview.warm-tech {
+	background: linear-gradient(135deg, #1c1a1a 0%, #302e2e 100%);
+}
+
+.theme-preview.warm-tech::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 30%;
+	background: linear-gradient(135deg, #ffb347 0%, #19e68c 100%);
+	opacity: 0.8;
+}
+
+/* Tema Light Elegance */
+.theme-preview.light-elegance {
+	background: linear-gradient(135deg, #fafbfc 0%, #f4f6f8 100%);
+}
+
+.theme-preview.light-elegance::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 30%;
+	background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+	opacity: 0.8;
+}
+
+/* Tema Neural Connect */
+.theme-preview.neural-connect {
+	background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+}
+
+.theme-preview.neural-connect::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 30%;
+	background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+	opacity: 0.8;
+}
+
+/* ===================================================================
+   INFORMACIÓN DEL TEMA
+   ================================================================== */
+.theme-info {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 0.5rem;
+	background: rgba(0, 0, 0, 0.7);
+	backdrop-filter: blur(10px);
+	transform: translateY(100%);
+	transition: transform 0.3s ease;
+}
+
+.theme-option:hover .theme-info {
+	transform: translateY(0);
+}
+
+.theme-name {
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: white;
+	text-align: center;
+	margin: 0;
+	line-height: 1.2;
+}
+
+/* ===================================================================
+   TEMA ACTUAL
+   ================================================================== */
+.current-theme {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
+	background: var(--color-glass-bg);
+	border: 1px solid var(--color-glass-border);
+	border-radius: 12px;
+	margin-bottom: 1rem;
+}
+
+.current-theme-info {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.current-theme-preview {
+	width: 32px;
+	height: 32px;
+	border-radius: 8px;
+	border: 2px solid var(--color-accent-primary);
+	background: var(--gradient-primary);
+}
+
+.current-theme-details {
+	display: flex;
+	flex-direction: column;
+}
+
+.current-theme-name {
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--color-text-primary);
+	margin: 0;
+}
+
+.current-theme-description {
+	font-size: 0.75rem;
+	color: var(--color-text-muted);
+	margin: 0;
+}
+
+.theme-status {
+	font-size: 0.75rem;
+	color: var(--color-accent-primary);
+	font-weight: 500;
+	padding: 0.25rem 0.5rem;
+	background: rgba(var(--color-accent-primary), 0.1);
+	border-radius: 6px;
+}
+
+/* ===================================================================
+   CONTROLES ADICIONALES
+   ================================================================== */
+.theme-controls {
+	display: flex;
+	gap: 0.75rem;
+	margin-top: 1rem;
+	padding-top: 1rem;
+	border-top: 1px solid var(--color-glass-border);
+}
+
+.control-button {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.75rem;
+	background: var(--color-glass-bg);
+	border: 1px solid var(--color-glass-border);
+	border-radius: 8px;
+	color: var(--color-text-secondary);
+	font-size: 0.75rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.control-button:hover {
+	background: var(--color-glass-border);
+	color: var(--color-text-primary);
+	transform: translateY(-1px);
+}
+
+.control-button.active {
+	background: var(--color-accent-primary);
+	color: white;
+	border-color: var(--color-accent-primary);
+}
+
+.control-icon {
+	width: 14px;
+	height: 14px;
+}
+
+/* ===================================================================
+   ANIMACIONES
+   ================================================================== */
+.theme-selector.animate-in {
+	animation: selectorFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes selectorFadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-10px) scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+.theme-option.changing {
+	animation: themeChange 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes themeChange {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+		box-shadow: 0 8px 25px var(--color-shadow-primary);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+/* ===================================================================
+   RESPONSIVE DESIGN
+   ================================================================== */
+@media (max-width: 768px) {
+	.theme-selector-container {
+		padding: 1rem;
+		max-width: 100%;
+	}
+
+	.themes-grid {
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0.75rem;
+	}
+
+	.selector-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.5rem;
+	}
+
+	.theme-controls {
+		flex-direction: column;
+	}
+}
+
+@media (max-width: 480px) {
+	.themes-grid {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.5rem;
+	}
+
+	.current-theme {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.75rem;
+	}
+
+	.theme-status {
+		align-self: flex-end;
+	}
+}

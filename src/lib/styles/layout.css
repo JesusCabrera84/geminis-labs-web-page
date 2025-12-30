@@ -1,47 +1,47 @@
 /* Layout utilities */
 .full-screen {
-  @apply relative w-full h-screen;
+	@apply relative h-screen w-full;
 }
 
 .centered-absolute {
-  @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+	@apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform;
 }
 
 .overlay-container {
-  @apply absolute z-40;
+	@apply absolute z-40;
 }
 
 /* Flexbox utilities */
 .flex-center {
-  @apply flex items-center justify-center;
+	@apply flex items-center justify-center;
 }
 
 .flex-between {
-  @apply flex items-center justify-between;
+	@apply flex items-center justify-between;
 }
 
 .flex-items-center {
-  @apply flex items-center;
+	@apply flex items-center;
 }
 
 .flex-space-x-2 {
-  @apply flex space-x-2;
+	@apply flex space-x-2;
 }
 
 /* Spacing utilities */
 .section-padding {
-  @apply px-4 py-6;
+	@apply px-4 py-6;
 }
 
 .container-padding {
-  @apply p-4;
+	@apply p-4;
 }
 
 /* Position utilities */
 .absolute-top-right {
-  @apply absolute top-4 right-4;
+	@apply absolute right-4 top-4;
 }
 
 .absolute-bottom-right {
-  @apply absolute bottom-4 right-4;
-} 
+	@apply absolute bottom-4 right-4;
+}
