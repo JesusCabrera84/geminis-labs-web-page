@@ -1,12 +1,14 @@
 # Módulo: Auth (Autenticación)
 
 ## 📌 Descripción
+
 Módulo de autenticación y registro de usuarios.
 Gestiona login, registro, recuperación de contraseña, verificación de email y aceptación de invitaciones.
 
 ---
 
 ## 👤 Actor
+
 - Usuario no autenticado (login, registro, recuperación)
 - Usuario con email no verificado (reenvío de verificación)
 
@@ -16,21 +18,22 @@ Gestiona login, registro, recuperación de contraseña, verificación de email y
 
 ### 🔹 Backend API (admin-api)
 
-| Endpoint | Método | Uso |
-|--------|--------|-----|
-| `/api/v1/auth/login` | POST | Iniciar sesión con email/password |
-| `/api/v1/auth/refresh` | POST | Refrescar access token |
-| `/api/v1/auth/forgot-password` | POST | Solicitar código de recuperación |
-| `/api/v1/auth/reset-password` | POST | Restablecer contraseña con código |
-| `/api/v1/clients` | POST | Registrar nuevo cliente |
-| `/api/v1/clients` | GET | Obtener información del cliente |
-| `/api/v1/auth/resend-verification` | POST | Reenviar email de verificación |
+| Endpoint                           | Método | Uso                               |
+| ---------------------------------- | ------ | --------------------------------- |
+| `/api/v1/auth/login`               | POST   | Iniciar sesión con email/password |
+| `/api/v1/auth/refresh`             | POST   | Refrescar access token            |
+| `/api/v1/auth/forgot-password`     | POST   | Solicitar código de recuperación  |
+| `/api/v1/auth/reset-password`      | POST   | Restablecer contraseña con código |
+| `/api/v1/clients`                  | POST   | Registrar nuevo cliente           |
+| `/api/v1/clients`                  | GET    | Obtener información del cliente   |
+| `/api/v1/auth/resend-verification` | POST   | Reenviar email de verificación    |
 
 ---
 
 ## 🔁 Flujo funcional
 
 ### Login
+
 1. Usuario ingresa email y password
 2. Validación de formulario (frontend)
 3. POST a `/api/v1/auth/login`
@@ -39,6 +42,7 @@ Gestiona login, registro, recuperación de contraseña, verificación de email y
 6. Si error 403 (email no verificado): mostrar banner con opción de reenvío
 
 ### Registro
+
 1. Usuario ingresa nombre completo, email, password
 2. Validación de password (8-72 chars, mayúscula, número, especial)
 3. POST a `/api/v1/clients`
@@ -46,6 +50,7 @@ Gestiona login, registro, recuperación de contraseña, verificación de email y
 5. Redirección a modo login
 
 ### Recuperación de contraseña
+
 1. Usuario ingresa email
 2. POST a `/api/v1/auth/forgot-password`
 3. Backend envía código de 6 dígitos por email
@@ -54,6 +59,7 @@ Gestiona login, registro, recuperación de contraseña, verificación de email y
 6. Redirección a login
 
 ### Reenvío de verificación
+
 1. Detectar error 403 en login
 2. Mostrar banner con botón "Reenviar Correo"
 3. POST a `/api/v1/auth/resend-verification` con email
@@ -63,16 +69,17 @@ Gestiona login, registro, recuperación de contraseña, verificación de email y
 
 ## 💾 Almacenamiento Local
 
-| Clave | Storage | Contenido |
-|-------|---------|-----------|
-| `geminis_access_token` | sessionStorage | JWT access token |
-| `geminis_id_token` | sessionStorage | JWT id token |
-| `geminis_refresh_token` | sessionStorage | JWT refresh token |
-| `geminis_user_data` | sessionStorage | Datos del usuario (JSON) |
+| Clave                   | Storage        | Contenido                |
+| ----------------------- | -------------- | ------------------------ |
+| `geminis_access_token`  | sessionStorage | JWT access token         |
+| `geminis_id_token`      | sessionStorage | JWT id token             |
+| `geminis_refresh_token` | sessionStorage | JWT refresh token        |
+| `geminis_user_data`     | sessionStorage | Datos del usuario (JSON) |
 
 ---
 
 ## ⚠️ Consideraciones
+
 - Tokens se almacenan en `sessionStorage` (no persisten al cerrar navegador)
 - Validación de password: 8-72 caracteres, 1 mayúscula, 1 número, 1 especial
 - Error 403 puede indicar email no verificado

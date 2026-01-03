@@ -49,7 +49,7 @@
 			} else {
 				// Detener actualizaciones en tiempo real si estaban activas
 				gpsService.stopLiveUpdates();
-				
+
 				// Cargar datos una sola vez
 				if (mapConfig.apiKey) {
 					// Intentar cargar desde la API real
@@ -100,12 +100,7 @@
 
 	<!-- Botón de logout -->
 	<div class="absolute top-4 right-4 z-50">
-		<button
-			on:click={handleLogout}
-			class="logout-button"
-		>
-			Cerrar sesión
-		</button>
+		<button on:click={handleLogout} class="logout-button"> Cerrar sesión </button>
 	</div>
 
 	<!-- Mapa de Google Maps -->
@@ -164,9 +159,11 @@
 		<div class="device-counter">
 			<div class="device-counter-container">
 				<span class="text-sm-medium text-gray-700">
-					{devices.length} dispositivo{devices.length !== 1 ? 's' : ''} activo{devices.length !== 1 ? 's' : ''}
+					{devices.length} dispositivo{devices.length !== 1 ? 's' : ''} activo{devices.length !== 1
+						? 's'
+						: ''}
 				</span>
 			</div>
 		</div>
 	{/if}
-</div> 
+</div>

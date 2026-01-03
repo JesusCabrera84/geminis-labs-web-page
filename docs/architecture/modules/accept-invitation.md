@@ -1,12 +1,14 @@
 # Módulo: Accept Invitation (Aceptar Invitación)
 
 ## 📌 Descripción
+
 Módulo para que usuarios invitados acepten su invitación y establezcan su contraseña.
 Permite a usuarios maestro invitar a otros usuarios a su cuenta.
 
 ---
 
 ## 👤 Actor
+
 - Usuario invitado (recibió email de invitación)
 - Futuro usuario vinculado a cuenta master
 
@@ -16,9 +18,9 @@ Permite a usuarios maestro invitar a otros usuarios a su cuenta.
 
 ### 🔹 Backend API (admin-api)
 
-| Endpoint | Método | Uso |
-|--------|--------|-----|
-| `/api/v1/users/accept-invitation` | POST | Aceptar invitación y establecer contraseña |
+| Endpoint                          | Método | Uso                                        |
+| --------------------------------- | ------ | ------------------------------------------ |
+| `/api/v1/users/accept-invitation` | POST   | Aceptar invitación y establecer contraseña |
 
 ---
 
@@ -32,8 +34,8 @@ Permite a usuarios maestro invitar a otros usuarios a su cuenta.
 6. POST a `/api/v1/users/accept-invitation` con:
    ```json
    {
-     "token": "invitation_token",
-     "password": "nueva_contraseña"
+   	"token": "invitation_token",
+   	"password": "nueva_contraseña"
    }
    ```
 7. Si exitoso:
@@ -59,11 +61,12 @@ El token es generado por el backend cuando un usuario master invita a otro usuar
 - Mínimo 8 caracteres, máximo 72
 - Al menos 1 letra mayúscula
 - Al menos 1 número
-- Al menos 1 carácter especial (!@#$%^&*(),.?":{}|<>_-+=[];)
+- Al menos 1 carácter especial (!@#$%^&\*(),.?":{}|<>\_-+=[];)
 
 ---
 
 ## ⚠️ Consideraciones
+
 - Token de invitación tiene tiempo de expiración
 - Token de un solo uso (no se puede reutilizar)
 - Usuario invitado no tiene cuenta previa

@@ -18,4 +18,4 @@
 
 <div class="min-h-screen w-full">
 	{@render children?.()}
-</div> 
+</div>

@@ -1,12 +1,14 @@
 # Módulo: Dashboard (Panel de Control)
 
 ## 📌 Descripción
+
 Vista principal del panel de control del usuario autenticado.
 Actualmente muestra estructura base con secciones de Productos y Planes (contenido próximamente).
 
 ---
 
 ## 👤 Actor
+
 - Usuario autenticado
 - Rol: cualquier usuario con sesión válida
 
@@ -16,9 +18,9 @@ Actualmente muestra estructura base con secciones de Productos y Planes (conteni
 
 ### 🔹 Backend API (admin-api)
 
-| Endpoint | Método | Uso |
-|--------|--------|-----|
-| `/api/v1/users/me` | GET | Obtener perfil del usuario (futuro) |
+| Endpoint           | Método | Uso                                 |
+| ------------------ | ------ | ----------------------------------- |
+| `/api/v1/users/me` | GET    | Obtener perfil del usuario (futuro) |
 
 > **Nota**: Actualmente el dashboard no consume APIs directamente, pero está preparado para integrar datos del usuario y métricas.
 
@@ -44,6 +46,7 @@ Actualmente muestra estructura base con secciones de Productos y Planes (conteni
 ---
 
 ## ⚠️ Consideraciones
+
 - Dashboard requiere sesión activa
 - Actualmente es una vista placeholder
 - Preparado para futuras integraciones con APIs de datos operativos

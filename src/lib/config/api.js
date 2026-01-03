@@ -23,6 +23,9 @@ export const API_CONFIG = {
 		GET_USERS: '/api/v1/users',
 		ACCEPT_INVITATION: '/api/v1/users/accept-invitation',
 
+		// Organizaciones
+		ORGANIZATIONS: '/api/v1/organizations',
+
 		// Contacto
 		SEND_CONTACT_MESSAGE: '/api/v1/contact/send-message'
 	},

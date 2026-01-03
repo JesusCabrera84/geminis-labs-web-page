@@ -1,12 +1,14 @@
 # Módulo: Products - Nexus
 
 ## 📌 Descripción
+
 Página de producto Nexus (plataforma de rastreo GPS).
 Presenta características, planes, comparativas y llamados a la acción.
 
 ---
 
 ## 👤 Actor
+
 - Usuario público (visitante interesado en Nexus)
 - Cliente potencial
 
@@ -16,11 +18,11 @@ Presenta características, planes, comparativas y llamados a la acción.
 
 ### 🔹 Recursos Estáticos
 
-| Recurso | Tipo | Uso |
-|---------|------|-----|
-| `/img/nexus-logo.png` | Imagen | Logo de Nexus |
+| Recurso                     | Tipo     | Uso                         |
+| --------------------------- | -------- | --------------------------- |
+| `/img/nexus-logo.png`       | Imagen   | Logo de Nexus               |
 | `/img/nexus-carousel/*.jpg` | Imágenes | Carrusel de características |
-| `/vid/map-back.mp4` | Video | Fondo animado de mapa |
+| `/vid/map-back.mp4`         | Video    | Fondo animado de mapa       |
 
 > **Nota**: Esta página es principalmente informativa y no consume APIs backend. Es una landing page de producto.
 
@@ -53,6 +55,7 @@ Presenta características, planes, comparativas y llamados a la acción.
 ---
 
 ## ⚠️ Consideraciones
+
 - Página completamente estática (no requiere autenticación)
 - Carrusel de imágenes usa JavaScript para auto-play
 - Efectos de scroll pueden afectar rendimiento en móviles

@@ -1,12 +1,14 @@
 # Módulo: Home (Página de Inicio)
 
 ## 📌 Descripción
+
 Página de inicio (landing page) de Geminis Labs.
 Presenta productos (Orion, Nexus), formulario de contacto, y secciones informativas.
 
 ---
 
 ## 👤 Actor
+
 - Usuario público (no requiere autenticación)
 - Visitante interesado en productos o contacto
 
@@ -16,28 +18,30 @@ Presenta productos (Orion, Nexus), formulario de contacto, y secciones informati
 
 ### 🔹 Backend API (admin-api)
 
-| Endpoint | Método | Uso |
-|--------|--------|-----|
-| `/api/v1/contact/send-message` | POST | Enviar mensaje de contacto |
+| Endpoint                       | Método | Uso                        |
+| ------------------------------ | ------ | -------------------------- |
+| `/api/v1/contact/send-message` | POST   | Enviar mensaje de contacto |
 
 ### 🔹 Google reCAPTCHA v3
 
-| Servicio | Uso |
-|---------|-----|
+| Servicio                                  | Uso                                             |
+| ----------------------------------------- | ----------------------------------------------- |
 | `https://www.google.com/recaptcha/api.js` | Verificación anti-bot en formulario de contacto |
-| reCAPTCHA execute | Generar token de verificación |
+| reCAPTCHA execute                         | Generar token de verificación                   |
 
 ---
 
 ## 🔁 Flujo funcional
 
 ### Navegación general
+
 1. Usuario accede a `/` (home)
 2. Renderizar secciones: Hero, Productos (Orion, Nexus), Contacto
 3. Animaciones de scroll y efectos visuales
 4. Navegación a productos específicos (`/products/nexus`)
 
 ### Formulario de contacto
+
 1. Usuario completa formulario (nombre, email, teléfono, mensaje)
 2. Validación de campos (frontend)
 3. Ejecutar reCAPTCHA v3 para obtener token
@@ -59,19 +63,21 @@ Presenta productos (Orion, Nexus), formulario de contacto, y secciones informati
 ## 📤 Estructura de datos - Contacto
 
 Request a `/api/v1/contact/send-message`:
+
 ```json
 {
-  "name": "Nombre del usuario",
-  "email": "user@example.com",
-  "phone": "+52 1234567890",
-  "message": "Mensaje del usuario",
-  "recaptcha_token": "token_generado_por_recaptcha"
+	"name": "Nombre del usuario",
+	"email": "user@example.com",
+	"phone": "+52 1234567890",
+	"message": "Mensaje del usuario",
+	"recaptcha_token": "token_generado_por_recaptcha"
 }
 ```
 
 ---
 
 ## ⚠️ Consideraciones
+
 - No requiere autenticación
 - reCAPTCHA v3 es invisible (no requiere interacción del usuario)
 - Formulario de contacto valida email y campos requeridos
@@ -83,7 +89,7 @@ Request a `/api/v1/contact/send-message`:
 
 - **Container:** Web App (SvelteKit)
 - **Component:** Home Module (Landing Page)
-- **Consumes:** 
+- **Consumes:**
   - Backend API (admin-api) - endpoint de contacto
   - Google reCAPTCHA v3 - verificación anti-bot
 - **Uses components:** Navbar

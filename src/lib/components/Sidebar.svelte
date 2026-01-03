@@ -24,6 +24,25 @@
 
 <aside class="sidebar">
 	<div class="sidebar-content">
+		<!-- Inicio -->
+		<div class="menu-section">
+			<a
+				href="/control-panel"
+				class="section-header no-chevron"
+				class:active={isActive('/control-panel')}
+			>
+				<svg class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+					/>
+				</svg>
+				<span class="section-title">Panel Principal</span>
+			</a>
+		</div>
+
 		<!-- Organización -->
 		<div class="menu-section">
 			<button
@@ -426,8 +445,24 @@
 		box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
 	}
 
+	.sidebar::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-image: url('/img/noise.png');
+		background-repeat: repeat;
+		opacity: 0.03;
+		pointer-events: none;
+		z-index: -1;
+	}
+
 	.sidebar-content {
 		padding: 1.5rem 0;
+		position: relative;
+		z-index: 1;
 	}
 
 	/* Secciones del menú */
@@ -454,9 +489,20 @@
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 	}
 
-	.section-header:hover {
+	.section-header:hover,
+	.section-header.active {
 		background: rgba(71, 85, 105, 0.2);
 		color: rgba(255, 255, 255, 1);
+	}
+
+	.section-header.active {
+		background: linear-gradient(90deg, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0.05) 100%);
+		color: rgba(167, 139, 250, 1);
+		border-left: 3px solid rgba(139, 92, 246, 0.8);
+	}
+
+	.section-header.no-chevron {
+		text-decoration: none;
 	}
 
 	.section-icon {

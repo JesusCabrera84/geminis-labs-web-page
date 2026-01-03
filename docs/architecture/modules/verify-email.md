@@ -1,12 +1,14 @@
 # Módulo: Verify Email (Verificación de Email)
 
 ## 📌 Descripción
+
 Módulo para verificar el correo electrónico del usuario.
 Procesa el token de verificación enviado por email y activa la cuenta.
 
 ---
 
 ## 👤 Actor
+
 - Usuario recién registrado
 - Usuario que recibió email de verificación
 
@@ -16,9 +18,9 @@ Procesa el token de verificación enviado por email y activa la cuenta.
 
 ### 🔹 Backend API (admin-api)
 
-| Endpoint | Método | Uso |
-|--------|--------|-----|
-| `/api/v1/auth/verify-email` | POST | Verificar email con token |
+| Endpoint                    | Método | Uso                       |
+| --------------------------- | ------ | ------------------------- |
+| `/api/v1/auth/verify-email` | POST   | Verificar email con token |
 
 ---
 
@@ -48,6 +50,7 @@ El token es generado por el backend y enviado por email al usuario.
 ---
 
 ## ⚠️ Consideraciones
+
 - Token de verificación tiene tiempo de expiración
 - Token de un solo uso (no se puede reutilizar)
 - Si el token ya fue usado, mostrar error apropiado

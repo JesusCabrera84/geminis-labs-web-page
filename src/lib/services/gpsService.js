@@ -131,7 +131,7 @@ class GPSService {
 				id: '2',
 				name: 'Equipo 2',
 				lat: 19.4342,
-				lng: -99.1350,
+				lng: -99.135,
 				lastUpdate: new Date().toLocaleString(),
 				speed: 32,
 				status: 'active',
@@ -140,8 +140,8 @@ class GPSService {
 			{
 				id: '3',
 				name: 'Equipo 3',
-				lat: 19.4300,
-				lng: -99.1300,
+				lat: 19.43,
+				lng: -99.13,
 				lastUpdate: new Date().toLocaleString(),
 				speed: 0,
 				status: 'stopped',
@@ -152,4 +152,4 @@ class GPSService {
 }
 
 // Exportar una instancia singleton
-export const gpsService = new GPSService(); 
+export const gpsService = new GPSService();

@@ -9,11 +9,12 @@
 
 	let mapContainer;
 	let map;
+	let googleInstance;
 	let googleMarkers = [];
 
 	onMount(async () => {
 		if (!browser) return; // Solo ejecutar en el cliente
-		
+
 		if (!apiKey) {
 			console.error('Google Maps API Key is required');
 			return;
@@ -21,7 +22,7 @@
 
 		// Importar dinámicamente para evitar problemas de SSR
 		const { Loader } = await import('@googlemaps/js-api-loader');
-		
+
 		const loader = new Loader({
 			apiKey: apiKey,
 			version: 'weekly',
@@ -29,15 +30,15 @@
 		});
 
 		try {
-			const google = await loader.load();
-			initMap(google);
+			googleInstance = await loader.load();
+			initMap();
 		} catch (error) {
 			console.error('Error loading Google Maps:', error);
 		}
 	});
 
-	async function initMap(google) {
-		map = new google.maps.Map(mapContainer, {
+	async function initMap() {
+		map = new googleInstance.maps.Map(mapContainer, {
 			center: center,
 			zoom: zoom,
 			styles: [
@@ -54,26 +55,26 @@
 	}
 
 	async function updateMarkers() {
-		if (!map || !browser) return;
+		if (!map || !browser || !googleInstance) return;
 
 		// Limpiar marcadores existentes
-		googleMarkers.forEach(marker => marker.setMap(null));
+		googleMarkers.forEach((marker) => marker.setMap(null));
 		googleMarkers = [];
 
 		// Crear nuevos marcadores
-		markers.forEach(device => {
-			const marker = new google.maps.Marker({
+		markers.forEach((device) => {
+			const marker = new googleInstance.maps.Marker({
 				position: { lat: device.lat, lng: device.lng },
 				map: map,
 				title: device.name || `Equipo ${device.id}`,
 				icon: {
 					url: device.icon || 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
-					scaledSize: new google.maps.Size(32, 32)
+					scaledSize: new googleInstance.maps.Size(32, 32)
 				}
 			});
 
 			// Info window para mostrar información del dispositivo
-			const infoWindow = new google.maps.InfoWindow({
+			const infoWindow = new googleInstance.maps.InfoWindow({
 				content: `
 					<div class="p-2">
 						<h3 class="font-bold text-lg">${device.name || `Equipo ${device.id}`}</h3>
@@ -104,4 +105,4 @@
 	div {
 		min-height: 100vh;
 	}
-</style> 
+</style>

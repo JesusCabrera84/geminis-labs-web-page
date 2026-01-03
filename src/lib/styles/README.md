@@ -24,12 +24,14 @@ La página principal (`/`) ahora es una página de login con:
 ### Clases Disponibles
 
 #### Video de Fondo
+
 - `.background-video` - Video que ocupa toda la pantalla
   - `position: fixed`
   - `object-fit: cover`
   - `z-index: -1`
 
 #### Overlay con Degradado
+
 - `.gradient-overlay` - Capa de colores sobre el video
   - `position: fixed`
   - `width: 100%` y `height: 100%`
@@ -39,6 +41,7 @@ La página principal (`/`) ahora es una página de login con:
   - Opacidad de 0.2 para cada color
 
 #### Círculos Animados
+
 - `.animated-circle` - Círculos que aparecen y desaparecen
   - `position: fixed`
   - `pointer-events: none` (no seleccionables)
@@ -48,6 +51,7 @@ La página principal (`/`) ahora es una página de login con:
   - Efecto de brillo mejorado
 
 #### Overlay de Login
+
 - `.login-overlay` - Contenedor del formulario de login
   - Centrado en la pantalla
   - Efecto de cristal con `backdrop-filter: blur(15px)`
@@ -57,12 +61,14 @@ La página principal (`/`) ahora es una página de login con:
 ### Características del Overlay de Login
 
 #### Formulario Principal
+
 - **Campos de entrada**: Email y contraseña con validación
 - **Botón de login**: Con gradiente y efectos hover
 - **Validación**: Campos requeridos y formato de email
 - **Accesibilidad**: Labels asociados y navegación por teclado
 
 #### Campos de Entrada
+
 - `.form-input` - Estilo para inputs de email y contraseña
   - `border: 2px solid #e1e5e9` - Borde sutil
   - `border-radius: 8px` - Esquinas redondeadas
@@ -71,18 +77,21 @@ La página principal (`/`) ahora es una página de login con:
   - Focus: Borde azul con sombra y fondo sólido
 
 #### Botón de Login
+
 - `.login-button` - Botón principal de inicio de sesión
   - `background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)` - Gradiente azul-morado
   - `transform: translateY(-2px)` - Efecto de elevación en hover
   - `box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3)` - Sombra con color
 
 #### Separador Visual
+
 - `.separator` - Línea divisoria con texto
   - Línea horizontal con texto centrado
   - Fondo blanco para el texto
   - `color: #666` - Texto gris
 
 #### Botones de Redes Sociales
+
 - `.social-buttons` - Contenedor de botones sociales
   - `display: flex` - Layout horizontal
   - `gap: 1rem` - Espaciado entre botones
@@ -96,17 +105,20 @@ La página principal (`/`) ahora es una página de login con:
   - Hover: Elevación y cambio de color
 
 #### Iconos de Redes Sociales
+
 - `.social-icon` - SVG icons de 20x20px
 - **Google**: Colores oficiales (azul, verde, amarillo, rojo)
 - **Facebook**: Color oficial #1877F2
 - **X (Twitter)**: Color negro
 
 #### Colores de Hover por Red Social
+
 - `.google-button:hover` - Borde y texto azul (#4285F4)
 - `.facebook-button:hover` - Borde y texto azul (#1877F2)
 - `.twitter-button:hover` - Borde y texto negro (#000000)
 
 #### Enlaces Adicionales
+
 - `.login-links` - Contenedor de enlaces
   - `display: flex` - Layout horizontal
   - `justify-content: space-between` - Distribución
@@ -118,6 +130,7 @@ La página principal (`/`) ahora es una página de login con:
   - Hover: Subrayado y color más oscuro
 
 #### Responsive Design
+
 - **Mobile (< 480px)**:
   - `.login-overlay`: `min-width: 320px`, `padding: 2rem`
   - `.social-buttons`: `flex-direction: column`
@@ -127,64 +140,64 @@ La página principal (`/`) ahora es una página de login con:
 
 ```html
 <div class="login-overlay">
-  <h1>Bienvenido</h1>
-  
-  <!-- Formulario de login -->
-  <form class="login-form">
-    <div class="form-group">
-      <label for="email">Correo electrónico</label>
-      <input type="email" id="email" class="form-input" required />
-    </div>
-    
-    <div class="form-group">
-      <label for="password">Contraseña</label>
-      <input type="password" id="password" class="form-input" required />
-    </div>
-    
-    <button type="submit" class="login-button">
-      Iniciar Sesión
-    </button>
-  </form>
-  
-  <!-- Separador -->
-  <div class="separator">
-    <span>o continúa con</span>
-  </div>
-  
-  <!-- Botones de redes sociales -->
-  <div class="social-buttons">
-    <button class="social-button google-button">
-      <svg class="social-icon">...</svg>
-      Google
-    </button>
-    
-    <button class="social-button facebook-button">
-      <svg class="social-icon">...</svg>
-      Facebook
-    </button>
-    
-    <button class="social-button twitter-button">
-      <svg class="social-icon">...</svg>
-      X
-    </button>
-  </div>
-  
-  <!-- Enlaces adicionales -->
-  <div class="login-links">
-    <a href="#" class="link">¿Olvidaste tu contraseña?</a>
-    <a href="#" class="link">Crear cuenta</a>
-  </div>
+	<h1>Bienvenido</h1>
+
+	<!-- Formulario de login -->
+	<form class="login-form">
+		<div class="form-group">
+			<label for="email">Correo electrónico</label>
+			<input type="email" id="email" class="form-input" required />
+		</div>
+
+		<div class="form-group">
+			<label for="password">Contraseña</label>
+			<input type="password" id="password" class="form-input" required />
+		</div>
+
+		<button type="submit" class="login-button">Iniciar Sesión</button>
+	</form>
+
+	<!-- Separador -->
+	<div class="separator">
+		<span>o continúa con</span>
+	</div>
+
+	<!-- Botones de redes sociales -->
+	<div class="social-buttons">
+		<button class="social-button google-button">
+			<svg class="social-icon">...</svg>
+			Google
+		</button>
+
+		<button class="social-button facebook-button">
+			<svg class="social-icon">...</svg>
+			Facebook
+		</button>
+
+		<button class="social-button twitter-button">
+			<svg class="social-icon">...</svg>
+			X
+		</button>
+	</div>
+
+	<!-- Enlaces adicionales -->
+	<div class="login-links">
+		<a href="#" class="link">¿Olvidaste tu contraseña?</a>
+		<a href="#" class="link">Crear cuenta</a>
+	</div>
 </div>
 ```
 
 ### Funcionalidad JavaScript
 
 #### Variables Reactivas
+
 - `email` - Campo de correo electrónico
 - `password` - Campo de contraseña
 - `circles` - Array de círculos animados
 
 #### Funciones Principales
+
 - `handleLogin()` - Maneja el envío del formulario
 - `handleSocialLogin(provider)` - Maneja login con redes sociales
 - `handleKeyPress(event)` - Maneja tecla Enter
@@ -192,6 +205,7 @@ La página principal (`/`) ahora es una página de login con:
 - `createRandomCircle()` - Crea círculo aleatorio
 
 #### Flujo de Autenticación
+
 1. **Verificación inicial**: `onMount` verifica si ya está logueado
 2. **Login manual**: `handleLogin()` simula autenticación
 3. **Login social**: `handleSocialLogin()` maneja redes sociales
@@ -199,6 +213,7 @@ La página principal (`/`) ahora es una página de login con:
 5. **Almacenamiento**: `localStorage` guarda estado de autenticación
 
 #### Simulación de Autenticación
+
 - **Login manual**: Cualquier email/contraseña válidos
 - **Login social**: Simula OAuth con proveedores
 - **Persistencia**: `localStorage.setItem('isLoggedIn', 'true')`
@@ -207,6 +222,7 @@ La página principal (`/`) ahora es una página de login con:
 ### Características de los Círculos Animados
 
 #### Generación en Grupos
+
 - **Frecuencia**: Cada 3-6 segundos
 - **Cantidad por grupo**: 3-8 círculos
 - **Delay entre círculos**: 200ms (efecto escalonado)
@@ -215,8 +231,9 @@ La página principal (`/`) ahora es una página de login con:
 - **Colores**: Rojo, verde, azul, amarillo, magenta, cian
 
 #### Animación Mejorada
+
 - **Duración**: 8 segundos
-- **Secuencia**: 
+- **Secuencia**:
   - 0%: Aparece (escala 0, opacidad 0)
   - 15%: Escala completa (escala 1, opacidad 1)
   - 70%: Escala expandida (escala 1.3, opacidad 0.9)
@@ -225,6 +242,7 @@ La página principal (`/`) ahora es una página de login con:
 - **Desaparición**: Automática después de la animación
 
 #### Colores Disponibles
+
 - `rgba(255, 107, 107, 0.8)` - Rojo
 - `rgba(107, 255, 107, 0.8)` - Verde
 - `rgba(107, 107, 255, 0.8)` - Azul
@@ -233,6 +251,7 @@ La página principal (`/`) ahora es una página de login con:
 - `rgba(107, 255, 255, 0.8)` - Cian
 
 #### Efecto de Degradado
+
 - **Tipo**: Degradado radial (`radial-gradient`)
 - **Centro**: Transparente (0% a 30%)
 - **Borde**: Color sólido (100%)
@@ -253,12 +272,14 @@ La página principal (`/`) ahora es una página de login con:
 ## Componentes
 
 ### Header (para otras páginas)
+
 - `header-container` - Contenedor principal del header
 - `header-button` - Botones del header
 - `header-button-active` - Botón activo
 - `header-button-inactive` - Botón inactivo
 
 ### Loading/Error
+
 - `loading-spinner` - Spinner de carga
 - `error-message` - Mensajes de error
 - `success-message` - Mensajes de éxito
@@ -266,21 +287,25 @@ La página principal (`/`) ahora es una página de login con:
 ## Utilidades
 
 ### Efectos
+
 - `glass-effect` - Efecto de cristal con blur
 - `shadow-soft` - Sombra suave
 - `shadow-strong` - Sombra fuerte
 
 ### Animaciones
+
 - `fade-in` - Animación de aparición
 - `slide-up` - Animación de deslizamiento hacia arriba
 - `circleAnimation` - Animación de círculos mejorada
 
 ### Texto
+
 - `text-gradient` - Texto con gradiente
 - `text-shadow` - Sombra de texto
 - `text-glow` - Brillo de texto
 
 ### Colores
+
 - `bg-gradient-primary` - Gradiente primario
 - `bg-gradient-secondary` - Gradiente secundario
 - `text-primary` - Color de texto primario
@@ -291,4 +316,4 @@ La página principal (`/`) ahora es una página de login con:
 - `map-markers.css` - Ya no se usa (eliminado)
 - `MapStyleSelector.svelte` - Componente eliminado
 - Dependencias de MapLibre GL - Removidas de la página principal
-- Markers sobrepuestos - Eliminados completamente 
+- Markers sobrepuestos - Eliminados completamente
